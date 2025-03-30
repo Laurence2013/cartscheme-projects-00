@@ -1,9 +1,19 @@
 {
   "name": "proj00",
   "version": "1.0.0",
-  "main": "eslint.config.js",
+  "main": "",
+	"type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"start": "node dist/servers/server.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon\"",
+    "dev:ts-node": "nodemon",
+    "build": "tsc ",
+    "clean": "rimraf dist",
+    "test:api": "newman run postman/example_collection.json",
+    "test:jest": "jest",
+		"lint": "eslint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
