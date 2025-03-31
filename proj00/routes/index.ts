@@ -1,19 +1,15 @@
 import express, { Request, Response } from 'express';
 
-import { sayHello, test00 } from '../src/index.js'
 import userModel from '../src/models/user.model.js';
-import { SayHello } from '../src/interfaces/customErrors.js';
+import { SayHello } from '../src/interfaces/customErrors/customErrors.js';
 
 const router = express.Router();
 
 router.get('/', (req: Request, res: Response) => {
-	const getName: SayHello = sayHello('');
-	const test01: number = test00(1, 5);
 	try {
 		userModel.find({}).then((data) => {
 			res.json({
-				msg: getName.name,
-				test02: test01,
+				msg: '',
 				payload: data,
 			});
 		});

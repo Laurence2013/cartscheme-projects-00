@@ -2,7 +2,7 @@ import http from 'http';
 
 import app from '../router.js';
 import test_mongodb from '../databases/test_databases/test_mongodb.js';
-import { CustomError } from '../src/interfaces/customErrors.js';
+import { CustomError } from '../src/interfaces/customErrors/customErrors.js';
 
 const port = process.env.PORT || '3030';
 

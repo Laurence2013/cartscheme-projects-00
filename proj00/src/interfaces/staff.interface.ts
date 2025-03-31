@@ -2,7 +2,7 @@ import mongoose, { Document, Types } from 'mongoose';
 import { DiscountCategory } from '../utils/discountCategories';
 import { DiscountRegion } from '../utils/discountRegions';
 
-export interface IStudentDiscount extends Document {
+export interface IStaffDiscount extends Document {
 	merchantName: string;
 	description: string;
 	discountLink: string;
