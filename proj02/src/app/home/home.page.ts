@@ -1,10 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { IonHeader, IonToolbar, IonTitle, IonContent, 
-  InfiniteScrollCustomEvent, IonList, IonItem, IonAvatar, IonSkeletonText, IonAlert, IonLabel, IonBadge } from '@ionic/angular/standalone';
+  InfiniteScrollCustomEvent, IonList, IonItem, IonAvatar, IonSkeletonText, 
+  IonAlert, IonLabel, IonBadge, IonInfiniteScrollContent, IonInfiniteScroll 
+} from '@ionic/angular/standalone';
+
+import { of, finalize, catchError } from 'rxjs';
 
 import { MovieService } from '../services/movie.service';
-import { of, finalize, catchError } from 'rxjs';
 import { MovieResult } from '../services/interfaces';
 import { RouterModule } from '@angular/router';
 
@@ -13,7 +16,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonBadge, IonLabel, IonAlert, IonSkeletonText, IonAvatar, IonItem, 
+  imports: [IonInfiniteScroll, IonInfiniteScrollContent, IonBadge, IonLabel, IonAlert, IonSkeletonText, IonAvatar, IonItem, 
     IonList, IonHeader, IonToolbar, IonTitle, IonContent, DatePipe, RouterModule],
 })
 export class HomePage {
@@ -53,6 +56,9 @@ export class HomePage {
         if(event){ event.target.disabled = res?.total_pages === this.currentPage }
       }});    
   }
-  public loadMore(event: InfiniteScrollCustomEvent){}
+  public loadMore(event: InfiniteScrollCustomEvent){
+    this.currentPage++;
+    this.loadMovies(event);
+  }
 }
 
