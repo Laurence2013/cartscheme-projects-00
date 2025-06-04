@@ -1,0 +1,7 @@
+{
+  "name": "bakery-shop-00",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
