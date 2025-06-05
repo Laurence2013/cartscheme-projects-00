@@ -25,6 +25,7 @@ import {
 import { ListHeadingComponent } from '../../../components/list-heading/list-heading.component';
 import { BannerComponent } from '../../../components/banner/banner.component';
 import { CategoriesComponent } from 'src/app/components/categories/categories.component';
+import { ProductListHorizontalComponent } from 'src/app/components/product-list-horizontal/product-list-horizontal.component';
 import { ProductService } from 'src/app/services/product/product.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { BannerService } from 'src/app/services/banner/banner.service'; 
@@ -53,7 +54,8 @@ import { Banner } from 'src/app/interfaces/banner.interface';
     FormsModule, 
     ListHeadingComponent, 
     BannerComponent,
-    CategoriesComponent]
+    CategoriesComponent,
+    ProductListHorizontalComponent]
 })
 export class HomePage implements OnInit {
 

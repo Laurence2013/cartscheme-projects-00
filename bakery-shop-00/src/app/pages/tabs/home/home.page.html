@@ -52,4 +52,9 @@
     <app-list-heading heading="Categories"></app-list-heading>
     <app-categories [categories]="categories()"></app-categories>
   }
+
+  @if(products().length > 0){
+    <app-list-heading heading="Featured Products"></app-list-heading>
+    <app-product-list-horizontal [products]="products()"></app-product-list-horizontal>
+  }
 </ion-content>
