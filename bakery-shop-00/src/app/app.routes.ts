@@ -8,21 +8,6 @@ export const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadComponent: () => import('./pages/tabs/tabs.page').then( m => m.TabsPage),
-    children: [
-      {
-        path: '',
-        redirectTo: '/tabs/home',
-        pathMatch: 'full',
-      },
-      {
-        path: 'home',
-        loadComponent: () => import('./pages/tabs/home/home.page').then( m => m.HomePage)
-      },
-      {
-        path: 'account',
-        loadComponent: () => import('./pages/tabs/account/account.page').then( m => m.AccountPage)
-      },
-    ]
-  },
+    loadChildren: () => import('./pages/tabs/tabs.route').then(m => m.tabsRoutes)
+  }
 ];
