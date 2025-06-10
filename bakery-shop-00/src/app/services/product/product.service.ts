@@ -8,6 +8,7 @@ import { ProductDetail } from '../../interfaces/product-detail';
 import { products } from '../../dummy-data/products';
 import { categories } from '../../dummy-data/categories';
 import { sellers } from '../../dummy-data/sellers';
+import { ProductDetailPage } from 'src/app/pages/tabs/product-detail/product-detail.page';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +19,14 @@ export class ProductService {
   public getProducts(): Product[] {
     return products;
   }
-  public getProductId(id: number): ProductDetail['data'] {
+  public getProductId(id: number): ProductDetail {
     const product = products.find(product => product.id === id);
     if (product) {
       const seller = sellers.find(seller => seller.id === product!.seller_id);
       const category = categories.find(category => category.id === product!.category_id);
       
-      return {...product, seller, category};
+      return {data: {...product, seller, category}};
     }
-    return null;
+    return {data: null}
   }
 }
