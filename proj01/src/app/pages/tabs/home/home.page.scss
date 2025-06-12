@@ -1,0 +1,31 @@
+ion-button#present-alert {
+  --background: #4CAF50;
+  --color: white;
+  margin-top: 20px;
+}
+
+ion-content {
+  // Centering ion-content itself is unusual.
+  // This CSS centers the content *within* the ion-content area using the grid.
+
+  ion-grid {
+    height: 100%; // Make the grid take the full height of the content area
+    display: flex;
+    justify-content: center; // Center grid content horizontally
+    align-items: center; // Center grid content vertically
+    flex-direction: column; // Stack rows vertically
+  }
+
+  ion-row {
+    width: 100%; // Ensure the row takes the full width of the grid
+    justify-content: center; // Center columns within the row
+    align-items: center; // Align columns vertically within the row
+  }
+
+  ion-col {
+    // Optional: Center content within each column if the content doesn't fill the column
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

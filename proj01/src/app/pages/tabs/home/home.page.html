@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="presentAlert()">Click Me!</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Placing 2 buttons in <ion-grid>, <ion-row>, <ion-col>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button id="present-alert1">Click Me 1</ion-button>
+        <ion-alert
+          trigger="present-alert1"
+          header="A short title is best! 1"
+          message="A message should be short and sweet! 1"
+          mode="ios"
+          [buttons]="alertButtons">
+        </ion-alert>
+      </ion-col>
+      <ion-col>
+        <ion-button id="present-alert2">Click Me 2</ion-button>
+        <ion-alert
+          trigger="present-alert2"
+          header="A short title is best! 2"
+          message="A message should be short and sweet! 2"
+          mode="ios"
+          [buttons]="alertButtons">
+        </ion-alert>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+-->
+
+<!-- Standard approach with two buttons and two alerts
+<ion-content>
+  <ion-button id="present-alert1">Click Me 1</ion-button>
+  <ion-button id="present-alert2">Click Me 2</ion-button>
+
+  <ion-alert
+    trigger="present-alert1"
+    header="A short title is best! 1"
+    message="A message should be short and sweet! 1"
+    mode="ios"
+    [buttons]="alertButtons">
+  </ion-alert>
+
+  <ion-alert
+    trigger="present-alert2"
+    header="A short title is best! 2"
+    message="A message should be short and sweet! 2"
+    mode="ios"
+    [buttons]="alertButtons">
+  </ion-alert>
+</ion-content>
+-->
