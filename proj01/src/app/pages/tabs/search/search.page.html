@@ -5,9 +5,32 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">search</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid [fixed]="true">
+    <ion-row id="row1">
+      <ion-col>1</ion-col>
+      <ion-col>2</ion-col>
+      <ion-col>
+        <ion-input placeholder="3"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row id="row2">
+      <ion-col size="auto">4, testing natural width of column, according to strings</ion-col>
+      <ion-col>This column has no 'size' attribute</ion-col>
+      <ion-col>6</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>7</ion-col>
+      <ion-col size="auto">
+        <div style="width: 200px" routerLink="/tabs/page-test">
+          <ion-button>Click me to go to another Page</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

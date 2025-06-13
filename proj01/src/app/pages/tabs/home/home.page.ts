@@ -17,8 +17,8 @@ import { location, chevronDownOutline, cart,
   styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, 
-    FormsModule, IonText, IonButton, IonItem, IonRow, IonCol,
-    IonSearchbar, IonLabel, IonIcon, IonAlert
+    FormsModule /*IonText*/, IonButton /*IonItem*/, IonRow, IonCol,
+    //IonSearchbar, IonLabel, IonIcon, IonAlert
   ]
 })
 export class HomePage implements OnInit {

@@ -22,7 +22,11 @@ export const routes: Routes = [
 			{
 				path: 'search',
 				loadComponent: () => import ('./pages/tabs/search/search.page').then(m => m.SearchPage)
+			},
+			{
+				path: 'page-test',
+				loadComponent: () => import('./pages/tabs/page-test/page-test.page').then( m => m.PageTestPage)
 			}
 		]
-	}
+	},
 ];
