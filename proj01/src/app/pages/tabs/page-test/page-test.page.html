@@ -8,14 +8,28 @@
   <ion-grid [fixed]="true">
     <ion-row>
       <ion-col>
-        <ion-button id="open-action-sheet">Open</ion-button>
+        <ion-button id="open-action-sheet">Open 1</ion-button>
         <ion-action-sheet
           trigger="open-action-sheet"
           [header]="'Actions'"
           [buttons]="actionSheetButtons"
         ></ion-action-sheet>
       </ion-col>
-      <ion-col>2</ion-col>
+      <ion-col>
+        <ion-button expand="block" (click)="presentActionSheet()">Open 2</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="setOpen(true)">Open</ion-button>
+        <ion-action-sheet
+          [isOpen]="isActionSheetOpen"
+          header="Actions"
+          [buttons]="actionSheetButtons"
+          (didDismiss)="setOpen(false)"
+        ></ion-action-sheet>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
