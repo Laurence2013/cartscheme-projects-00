@@ -4,7 +4,8 @@ import {
 	menuOutline, notificationsOutline, personOutline, searchOutline, paperPlaneOutline, arrowForwardOutline 
 } from 'ionicons/icons';
 import { 
-	IonContent, IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonInput, IonList
+	IonContent, IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonInput, IonList, IonCardContent, 
+	IonLabel, IonCard
 } from '@ionic/angular/standalone';
 
 import { ListHeaderComponent } from "../../../components/list-header/list-header.component";
@@ -16,6 +17,7 @@ import { brands } from 'src/app/mock-data/brands';
 import { cars } from 'src/app/mock-data/cars';
 import { banners } from 'src/app/mock-data/banners';
 import { CarItemComponent } from "../../../components/car-item/car-item.component";
+import { BrandItemComponent } from "../../../components/brand-item/brand-item.component";
 
 @Component({
   selector: 'app-home',
@@ -23,8 +25,8 @@ import { CarItemComponent } from "../../../components/car-item/car-item.componen
   styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [
-		IonContent, IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonInput, IonList,
-		ListHeaderComponent, HorizontalListComponent, CarItemComponent
+		IonContent, IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonInput, IonList, IonCardContent,
+		IonLabel, IonCard, ListHeaderComponent, HorizontalListComponent, CarItemComponent, BrandItemComponent
 	]
 })
 export class HomePage implements OnInit {

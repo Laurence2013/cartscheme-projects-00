@@ -50,6 +50,43 @@
 		</ng-template>
 	</ion-list>
 
+	<!-- Featured banner -->
+	@let banner = featuredBanners()[0];
+
+	@if(banner){
+		<ion-card class='featured-banner'>
+			<ion-card-content>
+				<ion-label>{{ banner?.title }}</ion-label>
+				<p>{{ banner?.description }}</p>
+				<img [src]='banner?.image' alt='Featured Cars' />
+			</ion-card-content>
+		</ion-card>
+	}
+
+	<!-- Brand list -->
+	<ion-list>
+		<app-list-header
+			heading='Brands'
+			buttonName='View all'
+			buttonIcon='grid-outline'
+			buttonColour='medium'
+			></app-list-header>
+
+		<app-horizontal-list
+			[items]='brands()'
+			[itemTemplate]='brandTemplate'
+			[config]='{slidesPerView: 3.2, spaceBetween: 10}'
+			[viewAllTemplate]='viewAllBrandTemplate'
+			></app-horizontal-list>
+
+		<ng-template #brandTemplate let-item>
+			<app-brand-item [brand]='item'></app-brand-item>
+		</ng-template>
+		<ng-template #viewAllBrandTemplate>
+			<app-brand-item [isViewAll]='true'></app-brand-item>
+		</ng-template>
+	</ion-list>
+
 	<!-- Popular car list -->
 	<ion-list>
 		<app-list-header
@@ -74,3 +111,4 @@
 		</ng-template>
 	</ion-list>
 </ion-content>
+

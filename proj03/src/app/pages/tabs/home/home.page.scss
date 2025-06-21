@@ -30,4 +30,38 @@ ion-content {
 		background: transparent;
 		margin-top: 3rem;
 	}
+	ion-card.featured-banner {
+    background: linear-gradient(
+      135deg,
+      var(--ion-color-primary),
+      var(--ion-color-primary-shade)
+    );
+    height: 10rem;
+    border-radius: 0.75rem;
+    margin: 3rem 0 0 0;
+    ion-card-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      ion-label {
+        font-size: var(--ion-font-size-large);
+        font-weight: var(--ion-font-weight-bold);
+      }
+      p {
+        font-size: var(--ion-font-size-base);
+        opacity: 0.9;
+        margin: 0.4rem 0 1rem 0;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 200%;
+        object-fit: cover;
+        opacity: 0.2;
+        z-index: -1;
+      }
+    }
+  }
 }
