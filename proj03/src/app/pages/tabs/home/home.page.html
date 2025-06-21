@@ -49,4 +49,28 @@
 			<app-car-item [isViewAll]='true'></app-car-item>
 		</ng-template>
 	</ion-list>
+
+	<!-- Popular car list -->
+	<ion-list>
+		<app-list-header
+			heading='Popular models'
+			buttonName='View all'
+			buttonIcon='arrow-forward-outline'
+			buttonColour='medium'
+			></app-list-header>
+
+		<app-horizontal-list
+			[items]='cars()'
+			[itemTemplate]='carTemplate'
+			[config]='{slidesPerView: 1.6, spaceBetween: 20}'
+			[viewAllTemplate]='viewAllCarTemplate'
+			></app-horizontal-list>
+
+		<ng-template #carTemplate let-item>
+			<app-car-item [car]='item'></app-car-item>
+		</ng-template>
+		<ng-template #viewAllCarTemplate>
+			<app-car-item [isViewAll]='true'></app-car-item>
+		</ng-template>
+	</ion-list>
 </ion-content>

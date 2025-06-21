@@ -29,8 +29,8 @@ import { CarItemComponent } from "../../../components/car-item/car-item.componen
 })
 export class HomePage implements OnInit {
 
-	public brand = signal<Brand[]>(brands);
-	public car = signal<Car[]>(cars);
+	public brands = signal<Brand[]>(brands);
+	public cars = signal<Car[]>(cars);
 	public recentViewedCars = signal<Car[]>(cars.slice(0, 3));
 	public featuredBanners = signal<Banner[]>(banners);
 

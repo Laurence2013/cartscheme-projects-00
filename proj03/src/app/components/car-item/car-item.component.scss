@@ -35,3 +35,37 @@ ion-card {
     }
   }
 }
+ion-item {
+  --padding-start: 5px;
+  --inner-padding-end: 0;
+  ion-label {
+    ion-text {
+      font-size: 0.8rem;
+      font-weight: var(--ion-font-weight-bold);
+    }
+    p.desc {
+      font-size: 0.75rem;
+      color: var(--ion-color-medium);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 5px;
+    }
+    p.price {
+      ion-text {
+        font-size: 0.9rem !important;
+        font-weight: var(--ion-font-weight-bold);
+      }
+      margin-top: 1rem;
+    }
+  }
+  ion-button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.125rem;
+    --color: var(--ion-color-primary);
+    align-self: end;
+  }
+}

@@ -21,10 +21,7 @@ export class HorizontalListComponent<T> implements OnInit {
 
 	readonly items = input.required<T[]>();
 
-	public config = input<{
-		slidesPerView: number;
-		spaceBetween?: number;
-	}>();
+	public config = input<{slidesPerView: number; spaceBetween?: number;}>();
 	public isViewAll = input<boolean>(true);
 	public viewAllTemplate = input<TemplateRef<any>>();
 
