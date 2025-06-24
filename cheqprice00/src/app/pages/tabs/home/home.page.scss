@@ -1,13 +1,22 @@
 ion-header {
-	ion-title {
-		text-align: center; /* Center the text */
-		background-color: var(--ion-color-light-tint); /* Use medium color for the header background */
-	}
 	ion-toolbar {
 		padding: 0.5rem;
-		ion-input {
-			background-color: var(--ion-color-primary-contrast);
-			border-radius: 2rem;
+		ion-title {
+			font-size: 1.5rem;
+			color: var(--ion-color-primary);
 		}
+	}
+}
+ion-content {
+	--padding-start: 1rem;
+	--padding-end: 1rem;
+	ion-input {
+		margin-top: 1rem;
+		--background: var(--ion-color-light-shade);
+		--border-radius: 50px;
+	}
+	ion-list {
+		margin-top: 30px;
+		background: transparent;
 	}
 }

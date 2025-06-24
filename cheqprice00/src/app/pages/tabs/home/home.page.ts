@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
 import { addIcons } from 'ionicons';
-import { paperPlaneOutline, searchOutline } from 'ionicons/icons';
+import { paperPlaneOutline, searchOutline, arrowForwardOutline } from 'ionicons/icons';
 import { 
-	IonContent, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonTitle } from '@ionic/angular/standalone';
+	IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonTitle, IonContent
+} from '@ionic/angular/standalone';
+import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonTitle, IonContent, IonHeader, IonToolbar, IonButton, IonInput, IonIcon]
+  imports: [
+		IonTitle, IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonContent,
+		ListHeaderComponent
+	]
 })
 export class HomePage implements OnInit {
 
   public constructor(){
-		addIcons({paperPlaneOutline, searchOutline});
+		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});
 	}
   public ngOnInit(){}
 }
