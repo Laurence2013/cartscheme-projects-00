@@ -1,16 +1,16 @@
 <ion-tabs>
 	<ion-tab-bar>
-		<ion-tab-button tab='home'>
+		<ion-tab-button tab='home' [routerLink]="['/tabs/home']">
 			<ion-icon name='home-outline'></ion-icon>
 			<ion-text>Home</ion-text>
 		</ion-tab-button>
 
-		<ion-tab-button tab='home'>
+		<ion-tab-button tab='categories' [routerLink]="['/tabs/categories']">
 			<ion-icon name='albums-outline'></ion-icon>
 			<ion-text>Categories</ion-text>
 		</ion-tab-button>
 
-		<ion-tab-button tab='home'>
+		<ion-tab-button tab='brands' [routerLink]="['/tabs/brands']">
 			<ion-icon name='ellipsis-horizontal-outline'></ion-icon>
 			<ion-text>Brands</ion-text>
 		</ion-tab-button>
