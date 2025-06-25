@@ -1,4 +1,4 @@
-export interface DiscountsInterface {
+export interface Discounts {
 	id: number;
 	retail: string;
 	slug: string;

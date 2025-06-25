@@ -22,7 +22,19 @@
 			buttonColour='medium'
 			></app-list-header>
 
-		<app-horizontal-list></app-horizontal-list>
+		<app-horizontal-list
+			[items]='top_discounts00()'
+			[itemTemplate]='topDiscountTemplate'
+			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
+			[viewAllTemplate]='viewAllTopDiscountTemplate'
+			></app-horizontal-list>
+
+		<ng-template #topDiscountTemplate let-discount>
+			<app-top-discounts [topDiscounts]='discount'></app-top-discounts>
+		</ng-template>
+		<ng-template #viewAllTopDiscountTemplate>
+			<app-top-discounts [isViewAll]='true'></app-top-discounts>
+		</ng-template>
 	</ion-list>
 </ion-content>
 

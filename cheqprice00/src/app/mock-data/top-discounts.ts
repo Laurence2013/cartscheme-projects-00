@@ -20,7 +20,7 @@ export const top_discounts = [
 		retail: 'Footasylum',
 		slug: 'footasylum',
 		discount: 'assets/top-discounts/30-percent-discount.jpg',
-		title: '20% discount summer sales',
+		title: '30% discount summer sales',
 		link: 'src/app/pages/discounts/discounts.page.ts'
 	},
 	{
@@ -28,7 +28,7 @@ export const top_discounts = [
 		retail: 'Asos',
 		slug: 'asos',
 		discount: 'assets/top-discounts/30-percent-discount-01.jpg',
-		title: '20% discount summer sales',
+		title: '30% discount summer sales',
 		link: 'src/app/pages/discounts/discounts.page.ts'
 	},
 	{
@@ -36,7 +36,7 @@ export const top_discounts = [
 		retail: 'Foot Locker',
 		slug: 'foot_locker',
 		discount: 'assets/top-discounts/30-percent-discount-00.jpg',
-		title: '20% discount summer sales',
+		title: '30% discount summer sales',
 		link: 'src/app/pages/discounts/discounts.page.ts'
 	}
 ]

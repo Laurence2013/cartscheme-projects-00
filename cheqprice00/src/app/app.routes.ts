@@ -27,10 +27,10 @@ export const routes: Routes = [
 				path: 'brands',
 				loadComponent: () => import('./pages/tabs/brands/brands.page').then( m => m.BrandsPage)
 			},
+			{
+				path: 'discounts',
+				loadComponent: () => import('./pages/discounts/discounts.page').then( m => m.DiscountsPage)
+			}
 		]
   },
-  {
-    path: 'discounts',
-    loadComponent: () => import('./pages/discounts/discounts.page').then( m => m.DiscountsPage)
-  }
 ];

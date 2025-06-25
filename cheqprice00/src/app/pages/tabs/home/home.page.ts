@@ -6,9 +6,10 @@ import {
 	IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonTitle, IonContent
 } from '@ionic/angular/standalone';
 
-import { DiscountsInterface } from '../../../interfaces/discounts.interface';
+import { Discounts } from '../../../interfaces/discounts.interface';
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
+import { TopDiscountsComponent } from '../../../components/top-discounts/top-discounts.component';
 import { top_discounts } from '../../../mock-data/top-discounts';
 
 @Component({
@@ -18,12 +19,12 @@ import { top_discounts } from '../../../mock-data/top-discounts';
   standalone: true,
   imports: [
 		IonTitle, IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonContent,
-		ListHeaderComponent, HorizontalListComponent
+		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent
 	]
 })
 export class HomePage implements OnInit {
 
-	public discounts = signal<DiscountsInterface[]>(top_discounts);
+	public top_discounts00 = signal<Discounts[]>(top_discounts);
 
   public constructor(){
 		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});
