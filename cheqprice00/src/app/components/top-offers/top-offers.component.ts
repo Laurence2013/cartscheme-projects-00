@@ -17,6 +17,7 @@ export class TopOffersComponent implements OnInit {
 
 	public topOffers = input<Offers>();
 	public isViewAll = input<boolean>(false);
+	public viewAllRoute = input<string[]>();
 
   public constructor(){}
   public ngOnInit(){}

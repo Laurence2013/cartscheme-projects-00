@@ -34,7 +34,7 @@
 			<app-top-discounts [topDiscounts]='discount'></app-top-discounts>
 		</ng-template>
 		<ng-template #viewAllTopDiscountTemplate>
-			<app-top-discounts [isViewAll]='true'></app-top-discounts>
+			<app-top-discounts [isViewAll]='true' [viewAllRoute]="['/tabs/discounts']"></app-top-discounts>
 		</ng-template>
 	</ion-list>
 
@@ -56,11 +56,10 @@
 			></app-horizontal-list>
 
 		<ng-template #topOffersTemplate let-offers>
-			<app-top-offers [topOffers]='offer'></app-top-offers>
+			<app-top-offers [topOffers]='offers'></app-top-offers>
 		</ng-template>
 		<ng-template #viewAllTopOffersTemplate>
-			<p>Hello</p>
-			<!--<app-top-discounts [isViewAll]='true'></app-top-discounts>-->
+			<app-top-offers [isViewAll]='true' [viewAllRoute]="['/tabs/offers']"></app-top-offers>
 		</ng-template>
 	</ion-list>
 </ion-content>

@@ -17,6 +17,7 @@ export class TopDiscountsComponent implements OnInit {
 
 	public topDiscounts = input<Discounts>();
 	public isViewAll = input<boolean>(false);
+	public viewAllRoute = input<string[]>();
 
   public constructor(){}
   public ngOnInit(){}
