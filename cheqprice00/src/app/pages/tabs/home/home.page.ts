@@ -7,10 +7,13 @@ import {
 } from '@ionic/angular/standalone';
 
 import { Discounts } from '../../../interfaces/discounts.interface';
+import { Offers } from '../../../interfaces/offers.interface';
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
 import { TopDiscountsComponent } from '../../../components/top-discounts/top-discounts.component';
+import { TopOffersComponent } from '../../../components/top-offers/top-offers.component';
 import { top_discounts } from '../../../mock-data/top-discounts';
+import { top_offers } from '../../../mock-data/top-offers';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +22,13 @@ import { top_discounts } from '../../../mock-data/top-discounts';
   standalone: true,
   imports: [
 		IonTitle, IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonContent,
-		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent
+		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent, TopOffersComponent
 	]
 })
 export class HomePage implements OnInit {
 
 	public top_discounts00 = signal<Discounts[]>(top_discounts);
+	public top_offers00 = signal<Offers[]>(top_offers);
 
   public constructor(){
 		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});

@@ -1,0 +1,21 @@
+<ion-card>
+	@if(!isViewAll()){
+		<ion-thumbnail>
+			<ion-badge color='dark'>
+				{{ topOffers()?.retail }}
+			</ion-badge>
+			<img class='discount-img' [src]='topOffers()?.offer'/>
+		</ion-thumbnail>
+
+		<ion-item lines='none'>
+			<ion-label>
+				<ion-text color='dark'>
+					{{ topOffers()?.title }}
+				</ion-text>
+			</ion-label>
+			<ion-button fill="clear" slot="end" [routerLink]="['/deals', topOffers()?.slug]">View Offers</ion-button>
+		</ion-item>
+	}@else{
+	<!--<app-view-all-card></app-view-all-card>-->
+	}
+</ion-card>

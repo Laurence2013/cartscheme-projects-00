@@ -2,10 +2,10 @@
 <ion-item-divider>
 	<ion-label color='dark'>{{ heading() }}</ion-label>
 
-	<ion-button slot='end' fill='clear' [color]='buttonColour()'>
+	<ion-button slot='end' fill='clear' [color]='buttonColour()' [routerLink]="['/tabs', slug()]">
 		<ion-icon slot='end' [name]='buttonIcon()'></ion-icon>
 		@if(buttonName()){
-		{{ buttonName() }}
+			{{ buttonName() }}
 		}
 	</ion-button>
 </ion-item-divider>

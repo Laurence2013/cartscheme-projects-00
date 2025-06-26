@@ -17,6 +17,7 @@
 	<ion-list color='light'>
 		<app-list-header
 			heading='Top Discounts'
+			slug='discounts'
 			buttonName='View All'
 			buttonIcon='arrow-forward-outline'
 			buttonColour='medium'
@@ -34,6 +35,32 @@
 		</ng-template>
 		<ng-template #viewAllTopDiscountTemplate>
 			<app-top-discounts [isViewAll]='true'></app-top-discounts>
+		</ng-template>
+	</ion-list>
+
+	<!-- Top Offers list -->
+	<ion-list color='light'>
+		<app-list-header
+			heading='Top Offers'
+			slug='offers'
+			buttonName='View All'
+			buttonIcon='arrow-forward-outline'
+			buttonColour='medium'
+			></app-list-header>
+
+		<app-horizontal-list
+			[items]='top_offers00()'
+			[itemTemplate]='topOffersTemplate'
+			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
+			[viewAllTemplate]='viewAllTopOffersTemplate'
+			></app-horizontal-list>
+
+		<ng-template #topOffersTemplate let-offers>
+			<app-top-offers [topOffers]='offer'></app-top-offers>
+		</ng-template>
+		<ng-template #viewAllTopOffersTemplate>
+			<p>Hello</p>
+			<!--<app-top-discounts [isViewAll]='true'></app-top-discounts>-->
 		</ng-template>
 	</ion-list>
 </ion-content>
