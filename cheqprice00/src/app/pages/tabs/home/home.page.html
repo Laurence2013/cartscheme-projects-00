@@ -34,7 +34,9 @@
 			<app-top-discounts [topDiscounts]='discount'></app-top-discounts>
 		</ng-template>
 		<ng-template #viewAllTopDiscountTemplate>
-			<app-top-discounts [isViewAll]='true' [viewAllRoute]="['/tabs/discounts']"></app-top-discounts>
+			<app-top-discounts 
+				[isViewAll]='true' 
+				[viewAllRoute]="['/tabs/discounts']"></app-top-discounts>
 		</ng-template>
 	</ion-list>
 
@@ -59,7 +61,34 @@
 			<app-top-offers [topOffers]='offers'></app-top-offers>
 		</ng-template>
 		<ng-template #viewAllTopOffersTemplate>
-			<app-top-offers [isViewAll]='true' [viewAllRoute]="['/tabs/offers']"></app-top-offers>
+			<app-top-offers 
+				[isViewAll]='true' 
+				[viewAllRoute]="['/tabs/offers']"></app-top-offers>
+		</ng-template>
+	</ion-list>
+
+	<!-- Value added list -->
+	<ion-list color='light'>
+		<app-list-header
+			heading='Value Added'
+			slug='value_added'
+			buttonName='View All'
+			buttonIcon='arrow-forward-outline'
+			buttonColour='medium'
+			></app-list-header>
+
+		<app-horizontal-list
+			[items]='giftcards00()'
+			[itemTemplate]='valueAddedTemplate'
+			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
+			[viewAllTemplate]='viewAllValueAddedTemplate'
+			></app-horizontal-list>
+
+		<ng-template #valueAddedTemplate let-valueAdded>
+			<p>Hello</p>
+		</ng-template>
+		<ng-template #viewAllValueAddedTemplate>
+			<p>Hello</p>
 		</ng-template>
 	</ion-list>
 </ion-content>

@@ -1,4 +1,6 @@
-export const top_discounts = [
+import { Discounts } from '../interfaces/discounts.interface';
+
+export const top_discounts: Discounts[] = [
 	{
 		id: 1,
 		retail: 'Sports Direct',
