@@ -3,3 +3,7 @@ ion-item-divider {
 	--padding-inline-end: 5px;
 	--background: transparent;
 }
+.horizontal-line {
+	border-bottom: 1px solid var(--ion-color-light-shade);
+	margin: 5px 0;
+}
