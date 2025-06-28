@@ -41,18 +41,15 @@ export class HomePage implements OnInit {
 	private discountService = inject(DiscountsService);
 
 	public top_general_discounts00 = signal<General[]>(top_general_discounts);
-	//public top_multibuys00 = signal<Multibuy[]>(top_multibuys);
-	public giftcards00 = signal<Giftcards[]>(giftcards);
 	public top_multibuys00: Signal<Multibuy[]> = toSignal(this.getGenDiscount(), {
 		initialValue: []
 	});
+	public giftcards00 = signal<Giftcards[]>(giftcards);
 
   public constructor(){
 		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});
 	}
-  public ngOnInit(){
-		//this.getGenDiscount();
-	}
+  public ngOnInit(){}
 	public getGenDiscount(): Observable<Multibuy[]> {
 		const getGenDiscount$: Observable<General> = this.discountService.getGeneralDiscounts();
 		const getStaffDiscount$: Observable<Staff> = this.discountService.getStaffDiscounts();
