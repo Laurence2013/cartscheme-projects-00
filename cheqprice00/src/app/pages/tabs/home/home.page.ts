@@ -6,9 +6,9 @@ import {
 	IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonTitle, IonContent
 } from '@ionic/angular/standalone';
 
-import { Discounts } from '../../../interfaces/discounts.interface';
-import { Offers } from '../../../interfaces/offers.interface';
-import { Giftcards } from '../../../interfaces/giftcards.interface';
+import { General } from '../../../interfaces/discounts/general.interface';
+import { Offers } from '../../../interfaces/offers/offers.interface';
+import { Giftcards } from '../../../interfaces/payment-flex/giftcards.interface';
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
 import { TopDiscountsComponent } from '../../../components/top-discounts/top-discounts.component';
@@ -29,7 +29,7 @@ import { giftcards } from '../../../mock-data/giftcards';
 })
 export class HomePage implements OnInit {
 
-	public top_discounts00 = signal<Discounts[]>(top_discounts);
+	public top_discounts00 = signal<General[]>(top_discounts);
 	public top_offers00 = signal<Offers[]>(top_offers);
 	public giftcards00 = signal<Giftcards[]>(giftcards);
 

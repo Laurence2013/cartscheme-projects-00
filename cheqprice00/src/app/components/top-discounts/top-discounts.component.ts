@@ -5,7 +5,7 @@ import { addIcons } from 'ionicons';
 import { IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge } from '@ionic/angular/standalone';
 
 import { ViewAllCardComponent } from '../../components/view-all-card/view-all-card.component';
-import { Discounts } from '../../interfaces/discounts.interface';
+import { General } from '../../interfaces/discounts/general.interface';
 
 @Component({
   selector: 'app-top-discounts',
@@ -15,7 +15,7 @@ import { Discounts } from '../../interfaces/discounts.interface';
 })
 export class TopDiscountsComponent implements OnInit {
 
-	public topDiscounts = input<Discounts>();
+	public topDiscounts = input<General>();
 	public isViewAll = input<boolean>(false);
 	public viewAllRoute = input<string[]>();
 

@@ -1,4 +1,5 @@
-export interface Discounts {
+// This is the Discounts in general
+export interface General {
 	id: number;
 	retail: string;
 	slug: string;

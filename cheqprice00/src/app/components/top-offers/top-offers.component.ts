@@ -5,7 +5,7 @@ import { addIcons } from 'ionicons';
 import { IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge } from '@ionic/angular/standalone';
 
 import { ViewAllCardComponent } from '../../components/view-all-card/view-all-card.component';
-import { Offers } from '../../interfaces/offers.interface';
+import { Offers } from '../../interfaces/offers/offers.interface';
 
 @Component({
   selector: 'app-top-offers',
