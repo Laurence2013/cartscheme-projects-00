@@ -1,6 +1,6 @@
-import { Multibuy } from '../interfaces/offers/multi-buy.interface';
+import { Multibuy } from '../../interfaces/offers/multi-buy.interface';
 
-export const top_offers: Multibuy[] = [
+export const top_multibuys: Multibuy[] = [
 	{
 		id: 1,
 		retail: 'Sports Direct',

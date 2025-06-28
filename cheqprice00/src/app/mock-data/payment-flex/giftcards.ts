@@ -1,4 +1,4 @@
-import { Giftcards } from '../interfaces/payment-flex/giftcards.interface';
+import { Giftcards } from '../../interfaces/payment-flex/giftcards.interface';
 
 export const giftcards: Giftcards[] = [
 	{

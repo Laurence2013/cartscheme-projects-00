@@ -7,15 +7,15 @@ import {
 } from '@ionic/angular/standalone';
 
 import { General } from '../../../interfaces/discounts/general.interface';
-import { Offers } from '../../../interfaces/offers/offers.interface';
+import { Multibuy } from '../../../interfaces/offers/multi-buy.interface';
 import { Giftcards } from '../../../interfaces/payment-flex/giftcards.interface';
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
 import { TopDiscountsComponent } from '../../../components/top-discounts/top-discounts.component';
-import { TopOffersComponent } from '../../../components/top-offers/top-offers.component';
-import { top_discounts } from '../../../mock-data/top-discounts';
-import { top_offers } from '../../../mock-data/top-offers';
-import { giftcards } from '../../../mock-data/giftcards';
+import { TopMultibuyComponent } from '../../../components/top-offers/top-offers.component';
+import { top_general_discounts } from '../../../mock-data/discounts/top-general-discounts';
+import { top_multibuys } from '../../../mock-data/offers/top-multibuys';
+import { giftcards } from '../../../mock-data/payment-flex/giftcards';
 
 @Component({
   selector: 'app-home',
@@ -24,13 +24,13 @@ import { giftcards } from '../../../mock-data/giftcards';
   standalone: true,
   imports: [
 		IonTitle, IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonContent,
-		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent, TopOffersComponent
+		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent, TopMultibuyComponent
 	]
 })
 export class HomePage implements OnInit {
 
-	public top_discounts00 = signal<General[]>(top_discounts);
-	public top_offers00 = signal<Offers[]>(top_offers);
+	public top_general_discounts00 = signal<General[]>(top_general_discounts);
+	public top_multibuys00 = signal<Multibuy[]>(top_multibuys);
 	public giftcards00 = signal<Giftcards[]>(giftcards);
 
   public constructor(){

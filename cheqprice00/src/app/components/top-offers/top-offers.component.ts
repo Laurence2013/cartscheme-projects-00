@@ -5,7 +5,7 @@ import { addIcons } from 'ionicons';
 import { IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge } from '@ionic/angular/standalone';
 
 import { ViewAllCardComponent } from '../../components/view-all-card/view-all-card.component';
-import { Offers } from '../../interfaces/offers/offers.interface';
+import { Multibuy } from '../../interfaces/offers/multi-buy.interface';
 
 @Component({
   selector: 'app-top-offers',
@@ -13,9 +13,9 @@ import { Offers } from '../../interfaces/offers/offers.interface';
   styleUrls: ['./top-offers.component.scss'],
 	imports: [IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge, RouterLink, ViewAllCardComponent]
 })
-export class TopOffersComponent implements OnInit {
+export class TopMultibuyComponent implements OnInit {
 
-	public topOffers = input<Offers>();
+	public topOffers = input<Multibuy>();
 	public isViewAll = input<boolean>(false);
 	public viewAllRoute = input<string[]>();
 

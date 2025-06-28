@@ -1,6 +1,6 @@
-import { General } from '../interfaces/discounts/general.interface';
+import { General } from '../../interfaces/discounts/general.interface';
 
-export const top_discounts: General[] = [
+export const top_general_discounts: General[] = [
 	{
 		id: 1,
 		retail: 'Sports Direct',
