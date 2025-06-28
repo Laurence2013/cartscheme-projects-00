@@ -24,21 +24,5 @@ export const top_general_discounts: General[] = [
 		discount: 'assets/top-discounts/30-percent-discount.jpg',
 		title: '30% discount summer sales',
 		link: 'src/app/pages/discounts/discounts.page.ts'
-	},
-	{
-		id: 4,
-		retail: 'Asos',
-		slug: 'asos',
-		discount: 'assets/top-discounts/30-percent-discount-01.jpg',
-		title: '30% discount summer sales',
-		link: 'src/app/pages/discounts/discounts.page.ts'
-	},
-	{
-		id: 5,
-		retail: 'Foot Locker',
-		slug: 'foot_locker',
-		discount: 'assets/top-discounts/30-percent-discount-00.jpg',
-		title: '30% discount summer sales',
-		link: 'src/app/pages/discounts/discounts.page.ts'
 	}
 ]
