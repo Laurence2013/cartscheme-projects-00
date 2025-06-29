@@ -5,7 +5,7 @@ export const occassions: Occassions[] = [
 		id: 5,
 		retail: 'Foot Locker',
 		slug: 'foot_locker',
-		title: "Any birthday's this month, half price for any chosen Addidas tracksuit",
+		title: "Any birthday's this month",
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		type: 'Birthday',
 		link: 'src/app/pages/offers/discounts.page.ts',

@@ -45,7 +45,6 @@ export class HomePage implements OnInit {
 	private discountsService = inject(DiscountsService);
 	private offersService = inject(OffersService);
 
-	public top_general_discounts01 = signal<General[]>(top_general_discounts);
 	public top_multibuys01: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []});
 	public top_general_discounts00: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []})
 	public top_multibuys00: Signal<MainOffers01[]> = toSignal(this.getOffers(), {initialValue: []});
@@ -79,8 +78,6 @@ export class HomePage implements OnInit {
 				link: discounts.link
 			})));
 		const result01$ = merge(staffDiscount$, genDiscount$).pipe(toArray());
-
-		result01$.subscribe(console.log);
 		return result01$;
 	}
 	public getOffers(): Observable<MainOffers01[]> {
@@ -111,8 +108,7 @@ export class HomePage implements OnInit {
 				title: multibuys.title,
 				image: multibuys.image
 			})));
-		const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());
-		
+		const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
 		return result00$;
 	}
 }
