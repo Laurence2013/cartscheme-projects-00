@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, Signal, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { Observable, merge, EMPTY } from 'rxjs';
+import { Observable, of, merge, EMPTY } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
 
 import { addIcons } from 'ionicons';
@@ -14,6 +14,9 @@ import { General } from '../../../interfaces/discounts/general.interface';
 import { Multibuys } from '../../../interfaces/offers/multibuys.interface';
 import { Giftcards } from '../../../interfaces/payment-flex/giftcards.interface';
 import { Staff } from '../../../interfaces/discounts/staff.interface';
+import { Occassions } from '../../../interfaces/offers/occassions.interface';
+import { Seasonal } from '../../../interfaces/offers/seasonal.interface';
+import { MainOffers01 } from '../../../interfaces/offers/main-offers01.interface';
 
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
@@ -42,8 +45,10 @@ export class HomePage implements OnInit {
 	private discountsService = inject(DiscountsService);
 	private offersService = inject(OffersService);
 
-	public top_general_discounts00 = signal<General[]>(top_general_discounts);
-	public top_multibuys00: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []});
+	public top_general_discounts01 = signal<General[]>(top_general_discounts);
+	public top_multibuys01: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []});
+	public top_general_discounts00: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []})
+	public top_multibuys00: Signal<MainOffers01[]> = toSignal(this.getOffers(), {initialValue: []});
 	public giftcards00 = signal<Giftcards[]>(giftcards);
 
   public constructor(){
@@ -78,13 +83,36 @@ export class HomePage implements OnInit {
 		result01$.subscribe(console.log);
 		return result01$;
 	}
-	public getOffers(){
-		const test00$ = this.offersService.getMultibuys();
-		const test01$ = this.offersService.getOccasssions();
-		const test02$ = this.offersService.getSeasonal();
+	public getOffers(): Observable<MainOffers01[]> {
+		const getMultibuys$: Observable<Multibuys> = this.offersService.getMultibuys();
+		const getOccassions$: Observable<Occassions> = this.offersService.getOccasssions();
+		const getSeasonal$: Observable<Seasonal> = this.offersService.getSeasonal();
+		const combine00$: Observable<MainOffers01> = getMultibuys$.pipe(
+			map(multibuys => ({
+				id: multibuys.id,
+				retail: multibuys.retail,
+				slug: multibuys.slug,
+				title: multibuys.title,
+				image: multibuys.offer
+			})));
+		const combine01$: Observable<MainOffers01> = getOccassions$.pipe(
+			map(multibuys => ({
+				id: multibuys.id,
+				retail: multibuys.retail,
+				slug: multibuys.slug,
+				title: multibuys.title,
+				image: multibuys.image
+			})));
+		const combine02$: Observable<MainOffers01> = getSeasonal$.pipe(
+			map(multibuys => ({
+				id: multibuys.id,
+				retail: multibuys.retail,
+				slug: multibuys.slug,
+				title: multibuys.title,
+				image: multibuys.image
+			})));
+		const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());
 		
-		test00$.subscribe(console.log);
-		test01$.subscribe(console.log);
-		test02$.subscribe(console.log);
+		return result00$;
 	}
 }

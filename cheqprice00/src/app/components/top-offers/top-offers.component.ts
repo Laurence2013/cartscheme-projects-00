@@ -6,6 +6,7 @@ import { IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge 
 
 import { ViewAllCardComponent } from '../../components/view-all-card/view-all-card.component';
 import { Multibuys } from '../../interfaces/offers/multibuys.interface';
+import { MainOffers01 } from '../../interfaces/offers/main-offers01.interface';
 
 @Component({
   selector: 'app-top-offers',
@@ -15,7 +16,7 @@ import { Multibuys } from '../../interfaces/offers/multibuys.interface';
 })
 export class TopMultibuyComponent implements OnInit {
 
-	public topOffers = input<Multibuys>();
+	public topOffers = input<MainOffers01>();
 	public isViewAll = input<boolean>(false);
 	public viewAllRoute = input<string[]>();
 
