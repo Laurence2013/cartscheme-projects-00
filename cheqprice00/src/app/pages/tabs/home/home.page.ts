@@ -11,7 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 
 import { General } from '../../../interfaces/discounts/general.interface';
-import { Multibuy } from '../../../interfaces/offers/multi-buy.interface';
+import { Multibuys } from '../../../interfaces/offers/multibuys.interface';
 import { Giftcards } from '../../../interfaces/payment-flex/giftcards.interface';
 import { Staff } from '../../../interfaces/discounts/staff.interface';
 
@@ -21,10 +21,11 @@ import { TopDiscountsComponent } from '../../../components/top-discounts/top-dis
 import { TopMultibuyComponent } from '../../../components/top-offers/top-offers.component';
 import { top_general_discounts } from '../../../mock-data/discounts/top-general-discounts';
 
-import { top_multibuys } from '../../../mock-data/offers/top-multibuys';
+import { multibuys } from '../../../mock-data/offers/multibuys';
 import { giftcards } from '../../../mock-data/payment-flex/giftcards';
 
 import { DiscountsService } from '../../../services/discounts.service';
+import { OffersService } from '../../../services/offers.service';
 
 @Component({
   selector: 'app-home',
@@ -38,22 +39,23 @@ import { DiscountsService } from '../../../services/discounts.service';
 })
 export class HomePage implements OnInit {
 
-	private discountService = inject(DiscountsService);
+	private discountsService = inject(DiscountsService);
+	private offersService = inject(OffersService);
 
 	public top_general_discounts00 = signal<General[]>(top_general_discounts);
-	public top_multibuys00: Signal<Multibuy[]> = toSignal(this.getGenDiscount(), {
-		initialValue: []
-	});
+	public top_multibuys00: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []});
 	public giftcards00 = signal<Giftcards[]>(giftcards);
 
   public constructor(){
 		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});
 	}
-  public ngOnInit(){}
-	public getGenDiscount(): Observable<Multibuy[]> {
-		const getGenDiscount$: Observable<General> = this.discountService.getGeneralDiscounts();
-		const getStaffDiscount$: Observable<Staff> = this.discountService.getStaffDiscounts();
-		const genDiscount$: Observable<Multibuy> = getGenDiscount$.pipe(
+  public ngOnInit(){
+		this.getOffers();
+	}
+	public getGenDiscount(): Observable<Multibuys[]> {
+		const getGenDiscount$: Observable<General> = this.discountsService.getGeneralDiscounts();
+		const getStaffDiscount$: Observable<Staff> = this.discountsService.getStaffDiscounts();
+		const genDiscount$: Observable<Multibuys> = getGenDiscount$.pipe(
 			map(discounts => ({
 				id: discounts.id,
 				retail: discounts.retail,
@@ -62,7 +64,7 @@ export class HomePage implements OnInit {
 				title: discounts.title,
 				link: discounts.link
 			})));
-		const staffDiscount$: Observable<Multibuy> = getStaffDiscount$.pipe(
+		const staffDiscount$: Observable<Multibuys> = getStaffDiscount$.pipe(
 			map(discounts => ({
 				id: discounts.id,
 				retail: discounts.retail,
@@ -75,5 +77,14 @@ export class HomePage implements OnInit {
 
 		result01$.subscribe(console.log);
 		return result01$;
+	}
+	public getOffers(){
+		const test00$ = this.offersService.getMultibuys();
+		const test01$ = this.offersService.getOccasssions();
+		const test02$ = this.offersService.getSeasonal();
+		
+		test00$.subscribe(console.log);
+		test01$.subscribe(console.log);
+		test02$.subscribe(console.log);
 	}
 }

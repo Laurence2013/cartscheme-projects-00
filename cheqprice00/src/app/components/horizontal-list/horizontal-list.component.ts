@@ -5,7 +5,7 @@ import { IonicSlides } from '@ionic/angular/standalone';
 
 import { register } from 'swiper/element/bundle';
 
-import { Multibuy } from '../../interfaces/offers/multi-buy.interface';
+import { Multibuys } from '../../interfaces/offers/multibuys.interface';
 
 register();
 

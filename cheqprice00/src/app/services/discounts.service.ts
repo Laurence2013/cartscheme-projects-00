@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, from, EMPTY } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 import { General } from '../interfaces/discounts/general.interface';
