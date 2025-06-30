@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ValueAddedComponent } from './value-added.component';
+import { TopValueAddedComponent } from './top-value-added.component';
 
-describe('ValueAddedComponent', () => {
-  let component: ValueAddedComponent;
-  let fixture: ComponentFixture<ValueAddedComponent>;
+describe('TopValueAddedComponent', () => {
+  let component: TopValueAddedComponent;
+  let fixture: ComponentFixture<TopValueAddedComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValueAddedComponent ],
+      declarations: [ TopValueAddedComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ValueAddedComponent);
+    fixture = TestBed.createComponent(TopValueAddedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,0 +1,49 @@
+<ion-card>
+	@if(!isViewAll()){
+		<ion-thumbnail>
+			<ion-badge color='dark'>
+				{{ topValueAdded()?.retail }}
+			</ion-badge>
+			<img class='discount-img' [src]='topValueAdded()?.image'/>
+		</ion-thumbnail>
+
+		<ion-item lines='none'>
+			<div class="item-content"> <ion-label>
+					<ion-text class='short-text' color='dark'>
+						{{ topValueAdded()?.description }}
+						{{ topValueAdded()?.partner_site }}
+						{{ topValueAdded()?.description }}
+					</ion-text>
+				</ion-label>
+				<ion-button fill="clear" [routerLink]="['/deals', topValueAdded()?.slug]">View Offers</ion-button>
+			</div>
+		</ion-item>
+	}@else{
+	<app-view-all-card [route]='viewAllRoute()'></app-view-all-card>
+	}
+</ion-card>
+
+
+<!--<ion-card>
+	@if(!isViewAll()){
+		<ion-thumbnail>
+			<ion-badge color='dark'>
+				{{ topValueAdded()?.retail }}
+			</ion-badge>
+			<img class='discount-img' [src]='topValueAdded()?.image'/>
+		</ion-thumbnail>
+
+		<ion-item lines='none'>
+			<ion-label>
+				<ion-text class='short-text' color='dark'>
+					{{ topValueAdded()?.description }} 
+					{{ topValueAdded()?.partner_site }}
+					{{ topValueAdded()?.description }}
+				</ion-text>
+			</ion-label>
+			<ion-button fill="clear" slot="end" [routerLink]="['/deals', topValueAdded()?.slug]"><p>View Offers</p></ion-button>
+		</ion-item>
+	}@else{
+	<app-view-all-card [route]='viewAllRoute()'></app-view-all-card>
+	}
+</ion-card>-->

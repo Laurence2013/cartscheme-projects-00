@@ -25,7 +25,8 @@ import { MainValueAdded00 } from '../../../interfaces/value-added/main-value-add
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
 import { TopDiscountsComponent } from '../../../components/top-discounts/top-discounts.component';
-import { TopMultibuyComponent } from '../../../components/top-offers/top-offers.component';
+import { TopOffersComponent } from '../../../components/top-offers/top-offers.component';
+import { TopValueAddedComponent } from '../../../components/top-value-added/top-value-added.component';
 
 import { top_general_discounts } from '../../../mock-data/discounts/top-general-discounts';
 import { multibuys } from '../../../mock-data/offers/multibuys';
@@ -42,7 +43,8 @@ import { ValueAddedService } from '../../../services/value-added.service';
   standalone: true,
   imports: [
 		IonTitle, IonList, IonHeader, IonToolbar, IonButton, IonInput, IonIcon, IonContent,
-		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent, TopMultibuyComponent
+		ListHeaderComponent, HorizontalListComponent, TopDiscountsComponent, TopOffersComponent,
+		TopValueAddedComponent
 	]
 })
 export class HomePage implements OnInit {
@@ -125,6 +127,7 @@ export class HomePage implements OnInit {
 				is_top_5: value_added.is_top_5,
 				retail: value_added.retail,
 				slug: value_added.slug,
+				partner_site: value_added.partner_site,
 				link: value_added.link,
 				image: value_added.image,
 				date: value_added.date
@@ -135,6 +138,8 @@ export class HomePage implements OnInit {
 				is_top_5: value_added.is_top_5,
 				retail: value_added.retail,
 				slug: value_added.slug,
+				type01: value_added.type01,
+				description: value_added.describe00,
 				link: value_added.link,
 				image: value_added.image,
 				date: value_added.date
@@ -145,6 +150,7 @@ export class HomePage implements OnInit {
 				is_top_5: value_added.is_top_5,
 				retail: value_added.retail,
 				slug: value_added.slug,
+				description: value_added.description,
 				image: value_added.image,
 				date: value_added.date
 			})));

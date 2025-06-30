@@ -1,0 +1,73 @@
+ion-card {
+	width: 100%;
+	height: 15rem;
+	border-radius: 1rem;
+	overflow: hidden;
+	margin: 0;
+  box-shadow: none;
+  padding: 0.5rem;
+  ion-thumbnail {
+    width: 100%;
+    height: 7rem;
+    background: transparent;
+    ion-badge {
+      height: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem; /* Added to create space below the badge */
+			margin-left: 0.5rem;
+			margin-right: 0.5rem;
+      img {
+        width: 0.9rem;
+        height: 0.9rem;
+        object-fit: contain;
+        margin-inline-start: 0.3rem;
+        background: var(--ion-color-light);
+        border-radius: 50%;
+      }
+    }
+		img.discount-img {
+			width: 100%;
+      height: 90%;
+      margin: auto;
+      padding: 0.5rem;
+      object-fit: contain;
+		}
+	}
+	ion-item {
+		--padding-start: 0.5rem;
+    --padding-top: 0.5rem;
+		--inner-padding-end: 0;
+
+		.item-content {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			// Added for spacing and alignment
+			justify-content: space-between; // Distributes space between items
+			height: 100%; // Ensure item-content takes full height of ion-item
+		}
+
+		ion-label {
+			ion-text {
+				font-size: 0.8rem;
+				font-weight: var(--ion-font-weight-bold);
+			}
+		}
+
+		ion-button {
+			// This targets the button directly within the item-content
+			align-self: flex-end; // Pushes the button to the end of the cross-axis (right in a column)
+			margin-top: 1rem; // Pushes the button to the bottom if there's extra space
+		}
+	}
+}
+.short-text {
+	margin-top: 0.5rem;
+  white-space: nowrap;    /* Prevents the text from wrapping to the next line */
+  overflow: hidden;       /* Hides any content that overflows the element's box */
+  text-overflow: ellipsis;/* Displays an ellipsis (...) for clipped text */
+  width: 80%;            /* Ensures the text takes up the full width available, then truncates */
+  display: block;         /* Important for text-overflow to work reliably on inline elements */
+}

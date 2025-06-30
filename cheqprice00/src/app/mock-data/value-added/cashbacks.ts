@@ -19,7 +19,7 @@ export const cashbacks: Cashbacks[] = [
     slug: 'asos',
     partner_site: 'TopCashback',
 		link: 'src/app/pages/offers/discounts.page.ts',
-		image: 'assets/top-discounts/20-percent-discount-01.jpg',
+		image: 'assets/top-discounts/20-percent-discount.jpg',
     percent_back00: 0.05,
     date: new Date('2025-09-09')
   }
