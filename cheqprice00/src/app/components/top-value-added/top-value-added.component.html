@@ -10,10 +10,9 @@
 		<ion-item lines='none'>
 			<div class="item-content"> <ion-label>
 					<ion-text class='short-text' color='dark'>
-						{{ topValueAdded()?.type01 }}
-						{{ topValueAdded()?.description }}
-						<b>Partner: </b>{{ topValueAdded()?.partner_site }}
-						{{ topValueAdded()?.description }}
+						@if(topValueAdded()?.type01){ <p><b>Loyalty programs: </b>{{ topValueAdded()?.type01 }}</p> }
+						@if(topValueAdded()?.description){ <p><b>Voucher: </b>{{ topValueAdded()?.description }}</p> }
+						@if(topValueAdded()?.partner_site){ <p><b>Partner: </b>{{ topValueAdded()?.partner_site }}</p> }
 					</ion-text>
 				</ion-label>
 				<ion-button fill="clear" [routerLink]="['/deals', topValueAdded()?.slug]">View Offers</ion-button>

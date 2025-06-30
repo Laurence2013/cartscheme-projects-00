@@ -49,8 +49,14 @@ ion-card {
 		}
 		ion-label {
 			ion-text {
+				width: 100%;
 				font-size: 0.8rem;
 				font-weight: var(--ion-font-weight-bold);
+				p {
+					b {
+						color: var(--ion-color-primary);
+					}
+				}
 			}
 		}
 		ion-button {
