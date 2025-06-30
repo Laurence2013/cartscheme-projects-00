@@ -1,0 +1,32 @@
+import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
+
+export const loyalty: Loyalty[] = [
+  {
+    id: 1,
+    retail: 'Sports Direct',
+    slug: 'sport_direct',
+		image: 'assets/top-discounts/30-percent-discount-01.jpg',
+		link: 'src/app/pages/offers/discounts.page.ts',
+    type: [Type.Point_based, Type.Tiered, Type.Subscription, Type.Value_based, Type.Referral],
+		describe00: '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe01: '2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe02: '3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe03: '4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe04: '5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+    date: new Date('2025-09-09')
+  },
+  {
+    id: 2,
+    retail: 'Assos',
+    slug: 'assos',
+		image: 'assets/top-discounts/20-percent-discount-00.jpg',
+		link: 'src/app/pages/offers/discounts.page.ts',
+    type: [Type.Point_based, Type.Tiered, Type.Subscription, Type.Value_based, Type.Referral],
+		describe00: '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe01: '2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe02: '3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe03: '4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe04: '5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+    date: new Date('2025-09-09')
+  }
+];

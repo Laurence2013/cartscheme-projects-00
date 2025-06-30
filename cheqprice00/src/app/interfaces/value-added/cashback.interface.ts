@@ -10,3 +10,5 @@ export interface Cashback {
 	link: string,
 	date: Date
 }
+
+// Percentage back is what retails store give back in cash depending on what you spend on.
