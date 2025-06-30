@@ -1,13 +1,14 @@
 export interface Cashback {
 	id: number,
+	is_top_5: 'Yes' | 'No',
 	retail: string,
-	partner_site: string,
 	slug: string,
+	partner_site: string,
+	link: string,
 	image: string,
 	percent_back00: number,
 	percent_back01?: number,
 	percent_back02?: number,
-	link: string,
 	date: Date
 }
 

@@ -3,6 +3,7 @@ import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
 export const loyalty: Loyalty[] = [
   {
     id: 1,
+    is_top_5: 'Yes',
     retail: 'Sports Direct',
     slug: 'sport_direct',
 		image: 'assets/top-discounts/30-percent-discount-01.jpg',
@@ -17,6 +18,7 @@ export const loyalty: Loyalty[] = [
   },
   {
     id: 2,
+    is_top_5: 'Yes',
     retail: 'Assos',
     slug: 'assos',
 		image: 'assets/top-discounts/20-percent-discount-00.jpg',
