@@ -1,6 +1,6 @@
-import { Cashback } from '../../interfaces/value-added/cashback.interface';
+import { Cashbacks } from '../../interfaces/value-added/cashbacks.interface';
 
-export const cashback: Cashback[] = [
+export const cashbacks: Cashbacks[] = [
   {
     id: 1,
     is_top_5: 'Yes',

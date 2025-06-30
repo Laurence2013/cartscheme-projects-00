@@ -12,8 +12,6 @@ import { ViewAllCardComponent } from '../../components/view-all-card/view-all-ca
 })
 export class ValueAddedComponent  implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  public constructor(){}
+  public ngOnInit(){}
 }
