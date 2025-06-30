@@ -10,8 +10,9 @@
 		<ion-item lines='none'>
 			<div class="item-content"> <ion-label>
 					<ion-text class='short-text' color='dark'>
+						{{ topValueAdded()?.type01 }}
 						{{ topValueAdded()?.description }}
-						{{ topValueAdded()?.partner_site }}
+						<b>Partner: </b>{{ topValueAdded()?.partner_site }}
 						{{ topValueAdded()?.description }}
 					</ion-text>
 				</ion-label>

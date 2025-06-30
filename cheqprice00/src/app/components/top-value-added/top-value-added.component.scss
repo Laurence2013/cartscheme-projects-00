@@ -39,7 +39,6 @@ ion-card {
 		--padding-start: 0.5rem;
     --padding-top: 0.5rem;
 		--inner-padding-end: 0;
-
 		.item-content {
 			display: flex;
 			flex-direction: column;
@@ -48,14 +47,12 @@ ion-card {
 			justify-content: space-between; // Distributes space between items
 			height: 100%; // Ensure item-content takes full height of ion-item
 		}
-
 		ion-label {
 			ion-text {
 				font-size: 0.8rem;
 				font-weight: var(--ion-font-weight-bold);
 			}
 		}
-
 		ion-button {
 			// This targets the button directly within the item-content
 			align-self: flex-end; // Pushes the button to the end of the cross-axis (right in a column)

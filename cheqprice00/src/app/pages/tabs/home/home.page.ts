@@ -138,7 +138,7 @@ export class HomePage implements OnInit {
 				is_top_5: value_added.is_top_5,
 				retail: value_added.retail,
 				slug: value_added.slug,
-				type01: value_added.type01,
+				type01: value_added.type01.map(val => val),
 				description: value_added.describe00,
 				link: value_added.link,
 				image: value_added.image,
