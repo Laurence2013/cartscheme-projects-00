@@ -15,8 +15,8 @@ export const cashback: Cashback[] = [
   {
     id: 2,
     is_top_5: 'Yes',
-    retail: 'Assos',
-    slug: 'assos',
+    retail: 'Asos',
+    slug: 'asos',
     partner_site: 'TopCashback',
 		link: 'src/app/pages/offers/discounts.page.ts',
 		image: 'assets/top-discounts/20-percent-discount-01.jpg',

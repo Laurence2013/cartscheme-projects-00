@@ -19,8 +19,8 @@ export const loyalty: Loyalty[] = [
   {
     id: 2,
     is_top_5: 'Yes',
-    retail: 'Assos',
-    slug: 'assos',
+    retail: 'Asos',
+    slug: 'asos',
 		image: 'assets/top-discounts/20-percent-discount-00.jpg',
 		link: 'src/app/pages/offers/discounts.page.ts',
     type: [Type.Point_based, Type.Tiered, Type.Subscription, Type.Value_based, Type.Referral],
