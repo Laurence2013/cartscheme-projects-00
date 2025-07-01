@@ -9,6 +9,7 @@ import { Vouchers } from '../../interfaces/value-added/vouchers.interface';
 import { MainValueAdded00 } from '../../interfaces/value-added/main-value-added00.interface';
 
 import { ValueAddedService } from '../../services/value-added/value-added.service';
+import { MainValueAddedService } from '../../services/helpers/main-value-added.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,15 @@ import { ValueAddedService } from '../../services/value-added/value-added.servic
 export class GetValueAddedService {
 
 	private valueAddedService = inject(ValueAddedService);
+	private mainValueAddedService = inject(MainValueAddedService);
 
   public constructor(){}
 	public getValueAdded(): Observable<MainValueAdded00[]> {
 		const getCashbacks$: Observable<Cashbacks> = this.valueAddedService.getCashbacks();
 		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
 		const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
+
+		//const combine03$ =  this.mainValueAddedService.mainValueAdded(getCashbacks$: Observable<MainValueAdded00>);
 		const combine00$: Observable<MainValueAdded00> = getCashbacks$.pipe(
 			map(value_added => ({
 				id: value_added.id,
