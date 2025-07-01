@@ -8,9 +8,62 @@
 		</ion-thumbnail>
 
 		<ion-item lines='none'>
-			<div class="item-content"> <ion-label>
+			<div class="item-content">
+				<ion-list class="info-list"> @if(topValueAdded()?.type01){
+						<ion-item lines="none"> <ion-label>
+								<ion-text class='short-text' color='dark'>
+									<p><b>Loyalties: </b>{{ truncateText00(topValueAdded()?.type01, 3) }}</p>
+								</ion-text>
+							</ion-label>
+						</ion-item>
+					}
+					@if(topValueAdded()?.description){
+						<ion-item lines="none">
+							<ion-label>
+								<ion-text class='short-text' color='dark'>
+									<p><b>Voucher: </b>{{ truncateText01(topValueAdded()?.description, 50) }}</p>
+								</ion-text>
+							</ion-label>
+						</ion-item>
+					}
+					@if(topValueAdded()?.partner_site){
+						<ion-item lines="none">
+							<ion-label>
+								<ion-text class='short-text' color='dark'>
+									<p><b>Partner: </b>{{ topValueAdded()?.partner_site }}</p>
+								</ion-text>
+							</ion-label>
+						</ion-item>
+					}
+				</ion-list>
+				<ion-button fill="clear" [routerLink]="['/deals', topValueAdded()?.slug]">View Value</ion-button>
+			</div>
+		</ion-item>
+	}@else{
+	<app-view-all-card [route]='viewAllRoute()'></app-view-all-card>
+	}
+</ion-card>
+
+
+<!--<ion-card>
+	@if(!isViewAll()){
+		<ion-thumbnail>
+			<ion-badge color='dark'>
+				{{ topValueAdded()?.retail }}
+			</ion-badge>
+			<img class='discount-img' [src]='topValueAdded()?.image'/>
+		</ion-thumbnail>
+
+		<ion-item lines='none'>
+			<div class="item-content"> 
+				<ion-label>
 					<ion-text class='short-text' color='dark'>
-						@if(topValueAdded()?.type01){ <p><b>Loyalty programs: </b>{{ topValueAdded()?.type01 }}</p> }
+						@if(topValueAdded()?.type01){ 
+							<p>
+								<b>Loyalty programs: </b>
+								{{ topValueAdded()?.type01 }}
+							</p> 
+						}
 						@if(topValueAdded()?.description){ <p><b>Voucher: </b>{{ topValueAdded()?.description }}</p> }
 						@if(topValueAdded()?.partner_site){ <p><b>Partner: </b>{{ topValueAdded()?.partner_site }}</p> }
 					</ion-text>
@@ -21,7 +74,7 @@
 	}@else{
 	<app-view-all-card [route]='viewAllRoute()'></app-view-all-card>
 	}
-</ion-card>
+</ion-card>-->
 
 
 <!--<ion-card>

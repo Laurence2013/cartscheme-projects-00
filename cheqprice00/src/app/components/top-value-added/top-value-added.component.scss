@@ -43,34 +43,63 @@ ion-card {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
-			// Added for spacing and alignment
-			justify-content: space-between; // Distributes space between items
-			height: 100%; // Ensure item-content takes full height of ion-item
+			justify-content: space-between;
+			height: 100%;
 		}
-		ion-label {
-			ion-text {
-				width: 100%;
-				font-size: 0.8rem;
-				font-weight: var(--ion-font-weight-bold);
-				p {
-					b {
-						color: var(--ion-color-primary);
+
+		// Styles for the new info-list
+		.info-list {
+			width: 100%;
+			padding: 0; // Remove default padding from ion-list
+			margin: 0; // Remove default margin from ion-list
+			background: transparent; // Ensure background is transparent if needed
+
+			ion-item {
+				--min-height: auto; // Allow ion-item to take natural height of content
+				--padding-start: 0; // Remove padding from individual list items
+				--padding-end: 0;
+				--padding-top: 0;
+				--padding-bottom: 0;
+				// Ensure that the background of the ion-item is transparent
+				--background: transparent;
+
+				ion-label {
+					margin: 0; // Remove default margin from ion-label within the list
+					padding-top: 0.2rem; // Small padding between list items for readability
+					padding-bottom: 0.2rem;
+
+					ion-text {
+						width: 100%;
+						font-size: 0.8rem;
+						font-weight: var(--ion-font-weight-bold);
+						p {
+							margin: 0; // Remove default paragraph margin to reduce vertical space
+							b {
+								color: var(--ion-color-primary);
+							}
+						}
+					}
+					.short-text {
+						//margin-top: 0;
+						//white-space: nowrap;
+						//overflow: hidden;
+						//text-overflow: ellipsis;
+						//width: 100%;
+						//display: block;
+
+						display: -webkit-box; // For multi-line ellipsis
+						-webkit-line-clamp: 50; // Number of lines to show before truncating
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						//margin-top: 0.5rem;
 					}
 				}
 			}
 		}
 		ion-button {
-			// This targets the button directly within the item-content
-			align-self: flex-end; // Pushes the button to the end of the cross-axis (right in a column)
-			margin-top: 1rem; // Pushes the button to the bottom if there's extra space
+			align-self: flex-end;
+			margin-top: 1rem;
 		}
 	}
-}
-.short-text {
-	margin-top: 0.5rem;
-  white-space: nowrap;    /* Prevents the text from wrapping to the next line */
-  overflow: hidden;       /* Hides any content that overflows the element's box */
-  text-overflow: ellipsis;/* Displays an ellipsis (...) for clipped text */
-  width: 80%;            /* Ensures the text takes up the full width available, then truncates */
-  display: block;         /* Important for text-overflow to work reliably on inline elements */
 }
