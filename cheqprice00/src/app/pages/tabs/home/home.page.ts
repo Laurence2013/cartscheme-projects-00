@@ -21,6 +21,7 @@ import { Loyalty, Type } from '../../../interfaces/value-added/loyalty.interface
 import { Vouchers } from '../../../interfaces/value-added/vouchers.interface';
 import { MainOffers01 } from '../../../interfaces/offers/main-offers01.interface';
 import { MainValueAdded00 } from '../../../interfaces/value-added/main-value-added00.interface';
+import { MainDiscounts00 } from '../../../interfaces/discounts/main-discounts00.interface';
 
 import { ListHeaderComponent } from '../../../components/list-header/list-header.component';
 import { HorizontalListComponent } from '../../../components/horizontal-list/horizontal-list.component';
@@ -32,9 +33,12 @@ import { top_general_discounts } from '../../../mock-data/discounts/top-general-
 import { multibuys } from '../../../mock-data/offers/multibuys';
 import { giftcards } from '../../../mock-data/payment-flex/giftcards';
 
-import { DiscountsService } from '../../../services/discounts.service';
-import { OffersService } from '../../../services/offers.service';
+import { DiscountsService } from '../../../services/discounts/discounts.service';
+import { OffersService } from '../../../services/offers/offers.service';
 import { ValueAddedService } from '../../../services/value-added.service';
+
+import { GetDiscountService } from '../../../services/discounts/get-discount.service';
+import { GetOffersService } from '../../../services/offers/get-offers.service';
 
 @Component({
   selector: 'app-home',
@@ -49,74 +53,20 @@ import { ValueAddedService } from '../../../services/value-added.service';
 })
 export class HomePage implements OnInit {
 
-	private discountsService = inject(DiscountsService);
-	private offersService = inject(OffersService);
+	private getDiscountService = inject(GetDiscountService);
+	private getOffersService = inject(GetOffersService);
 	private valueAddedService = inject(ValueAddedService);
 
-	public top_general_discounts00: Signal<Multibuys[]> = toSignal(this.getGenDiscount(), {initialValue: []});
+	public top_general_discounts00: Signal<MainDiscounts00[]> = toSignal(this.getGenDiscount(), {initialValue: []});
 	public top_multibuys00: Signal<MainOffers01[]> = toSignal(this.getOffers(), {initialValue: []});
 	public top_value_added00: Signal<MainValueAdded00[]> = toSignal(this.getValueAdded(), {initialValue: []});
-	//public giftcards00 = signal<Giftcards[]>(giftcards);
 
   public constructor(){
 		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});
 	}
   public ngOnInit(){}
-	public getGenDiscount(): Observable<Multibuys[]> {
-		const getGenDiscount$: Observable<General> = this.discountsService.getGeneralDiscounts();
-		const getStaffDiscount$: Observable<Staff> = this.discountsService.getStaffDiscounts();
-		const genDiscount$: Observable<Multibuys> = getGenDiscount$.pipe(
-			map(discounts => ({
-				id: discounts.id,
-				retail: discounts.retail,
-				slug: discounts.slug,
-				offer: discounts.discount,
-				title: discounts.title,
-				link: discounts.link
-			})));
-		const staffDiscount$: Observable<Multibuys> = getStaffDiscount$.pipe(
-			map(discounts => ({
-				id: discounts.id,
-				retail: discounts.retail,
-				slug: discounts.slug,
-				offer: discounts.discount,
-				title: discounts.title,
-				link: discounts.link
-			})));
-		const result01$ = merge(staffDiscount$, genDiscount$).pipe(toArray());
-		return result01$;
-	}
-	public getOffers(): Observable<MainOffers01[]> {
-		const getMultibuys$: Observable<Multibuys> = this.offersService.getMultibuys();
-		const getOccassions$: Observable<Occassions> = this.offersService.getOccasssions();
-		const getSeasonal$: Observable<Seasonal> = this.offersService.getSeasonal();
-		const combine00$: Observable<MainOffers01> = getMultibuys$.pipe(
-			map(multibuys => ({
-				id: multibuys.id,
-				retail: multibuys.retail,
-				slug: multibuys.slug,
-				title: multibuys.title,
-				image: multibuys.offer
-			})));
-		const combine01$: Observable<MainOffers01> = getOccassions$.pipe(
-			map(multibuys => ({
-				id: multibuys.id,
-				retail: multibuys.retail,
-				slug: multibuys.slug,
-				title: multibuys.title,
-				image: multibuys.image
-			})));
-		const combine02$: Observable<MainOffers01> = getSeasonal$.pipe(
-			map(multibuys => ({
-				id: multibuys.id,
-				retail: multibuys.retail,
-				slug: multibuys.slug,
-				title: multibuys.title,
-				image: multibuys.image
-			})));
-		const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
-		return result00$;
-	}
+	public getGenDiscount(): Observable<MainDiscounts00[]> { return this.getDiscountService.getGenDiscounts() }
+	public getOffers(): Observable<MainOffers01[]> { return this.getOffersService.getOffers() }
 	public getValueAdded(): Observable<MainValueAdded00[]> {
 		const getCashbacks$: Observable<Cashbacks> = this.valueAddedService.getCashbacks();
 		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();

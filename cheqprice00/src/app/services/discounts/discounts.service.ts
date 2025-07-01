@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-import { General } from '../interfaces/discounts/general.interface';
-import { Student } from '../interfaces/discounts/student.interface';
-import { Staff } from '../interfaces/discounts/staff.interface';
+import { General } from '../../interfaces/discounts/general.interface';
+import { Student } from '../../interfaces/discounts/student.interface';
+import { Staff } from '../../interfaces/discounts/staff.interface';
 
-import { top_general_discounts } from '../mock-data/discounts/top-general-discounts';
-import { staff_discounts } from '../mock-data/discounts/staff-discounts';
-import { student_discounts } from '../mock-data/discounts/student-discounts';
+import { top_general_discounts } from '../../mock-data/discounts/top-general-discounts';
+import { staff_discounts } from '../../mock-data/discounts/staff-discounts';
+import { student_discounts } from '../../mock-data/discounts/student-discounts';
 
 @Injectable({
   providedIn: 'root'

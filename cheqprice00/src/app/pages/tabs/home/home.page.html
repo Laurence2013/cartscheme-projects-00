@@ -71,7 +71,7 @@
 	<ion-list color='light'>
 		<app-list-header
 			heading='Value Added'
-			slug='value_added'
+			slug='value-added'
 			buttonName='View All'
 			buttonIcon='arrow-forward-outline'
 			buttonColour='medium'
@@ -88,7 +88,10 @@
 			<app-top-value-added [topValueAdded]='valueAdded'></app-top-value-added>
 		</ng-template>
 		<ng-template #viewAllValueAddedTemplate>
-			<p>Hello</p>
+			<app-top-value-added
+				[isViewAll]='true'
+				[viewAllRoute]="['/tabs/value-added']"
+				></app-top-value-added>
 		</ng-template>
 	</ion-list>
 </ion-content>

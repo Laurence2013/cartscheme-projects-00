@@ -3,17 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { tap, map, take } from 'rxjs/operators';
 
-import { Bundles } from '../interfaces/offers/bundles.interface';
-import { LimitedTime } from '../interfaces/offers/limited-time.interface';
-import { Multibuys } from '../interfaces/offers/multibuys.interface';
-import { Occassions } from '../interfaces/offers/occassions.interface';
-import { Seasonal } from '../interfaces/offers/seasonal.interface';
+import { Bundles } from '../../interfaces/offers/bundles.interface';
+import { LimitedTime } from '../../interfaces/offers/limited-time.interface';
+import { Multibuys } from '../../interfaces/offers/multibuys.interface';
+import { Occassions } from '../../interfaces/offers/occassions.interface';
+import { Seasonal } from '../../interfaces/offers/seasonal.interface';
 
-import { bundles } from '../mock-data/offers/bundles';
-import { limitedTime } from '../mock-data/offers/limited-time';
-import { multibuys } from '../mock-data/offers/multibuys';
-import { occassions } from '../mock-data/offers/occassions';
-import { seasonal } from '../mock-data/offers/seasonal';
+import { bundles } from '../../mock-data/offers/bundles';
+import { limitedTime } from '../../mock-data/offers/limited-time';
+import { multibuys } from '../../mock-data/offers/multibuys';
+import { occassions } from '../../mock-data/offers/occassions';
+import { seasonal } from '../../mock-data/offers/seasonal';
 
 @Injectable({
   providedIn: 'root'
