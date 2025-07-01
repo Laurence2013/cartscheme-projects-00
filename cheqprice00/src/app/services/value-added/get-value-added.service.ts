@@ -25,7 +25,7 @@ export class GetValueAddedService {
 		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
 		const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
 
-		//const combine03$ =  this.mainValueAddedService.mainValueAdded(getCashbacks$: Observable<MainValueAdded00>);
+		const combine03$ =  this.mainValueAddedService.mainValueAdded(getCashbacks$);
 		const combine00$: Observable<MainValueAdded00> = getCashbacks$.pipe(
 			map(value_added => ({
 				id: value_added.id,
