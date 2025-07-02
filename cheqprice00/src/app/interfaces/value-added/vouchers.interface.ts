@@ -1,10 +1,7 @@
-export interface Vouchers {
-	id: number,
-	is_top_5: 'Yes' | 'No',
-	retail: string,
-	slug: string,
+import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
+
+export interface Vouchers extends BaseInterface00 {
+	image: string,
 	description: string,
 	type00: 'spend_in_store' | 'click_and_collect',
-	image: string,
-	date: Date
 }

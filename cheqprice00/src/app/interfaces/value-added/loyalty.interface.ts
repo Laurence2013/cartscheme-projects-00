@@ -1,3 +1,5 @@
+import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
+
 export enum Type {
 	Point_based = 'point_based',
 	Tiered = 'tiered',
@@ -9,13 +11,8 @@ export enum Type {
 	Community = 'community',
 	Stamp_card = 'stamp_card'
 }
-export interface Loyalty {
-	id: number,
-	is_top_5: 'Yes' | 'No',
-	retail: string,
-	slug: string,
+export interface Loyalty extends BaseInterface00 {
 	image: string,
-	link: string,
 	type01: Type[],
 	describe00?: string,
 	describe01?: string,
@@ -27,5 +24,4 @@ export interface Loyalty {
 	describe07?: string,
 	describe08?: string,
 	describe09?: string,
-	date: Date
 }

@@ -1,12 +1,8 @@
 import { Type } from './loyalty.interface';
+import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
 
-export interface MainValueAdded00 {
-	id: number,
-	is_top_5: 'Yes' | 'No',
-	retail: string,
-	slug: string,
+export interface MainValueAdded00 extends BaseInterface00 {
 	image: string,
-	link?: string,
 	partner_site?: string,
 	percent_back00?: number,
 	percent_back01?: number,
@@ -24,5 +20,4 @@ export interface MainValueAdded00 {
 	describe09?: string,
 	description?: string,
 	type00?: 'spend_in_store' | 'click_and_collect',
-	date: Date
 }
