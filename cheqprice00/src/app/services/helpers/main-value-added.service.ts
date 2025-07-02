@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, of, iif } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
 import { Cashbacks } from '../../interfaces/value-added/cashbacks.interface';
@@ -14,7 +14,13 @@ import { MainValueAdded00 } from '../../interfaces/value-added/main-value-added0
 export class MainValueAddedService {
 
   public constructor(){}
-  public mainValueAdded(getDiscount$: Observable<Cashbacks>): Observable<MainValueAdded00> {
+  public mainValueAdded(getDiscount$: Observable<Cashbacks | Loyalty | Vouchers>): Observable<MainValueAdded00> {
+
+		type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
+		const test01$ = (test00$: Observable<Cashbacks | Loyalty | Vouchers>) => {
+			return test00$.pipe(map(test01 => test01.is_Type === 'Cashbacks'))
+		}
+		test01$(getDiscount$).subscribe(console.log);
 
 		const combine00$: Observable<MainValueAdded00> = getDiscount$.pipe(
 			map(discount => ({
@@ -27,6 +33,6 @@ export class MainValueAddedService {
 				image: discount.image,
 				date: discount.date
 			})));
-      return combine00$;
+		return combine00$;
   }
 }

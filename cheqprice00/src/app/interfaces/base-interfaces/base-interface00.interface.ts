@@ -4,5 +4,6 @@ export interface BaseInterface00 {
 	retail: string,
 	slug: string,
 	link?: string,
+	partner_site?: string,
   date: Date
 }

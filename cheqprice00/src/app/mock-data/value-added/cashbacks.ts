@@ -3,6 +3,7 @@ import { Cashbacks } from '../../interfaces/value-added/cashbacks.interface';
 export const cashbacks: Cashbacks[] = [
   {
     id: 1,
+    is_Type: 'Cashbacks',
     is_top_5: 'Yes',
     retail: 'Sports Direct',
     slug: 'sport_direct',
@@ -14,6 +15,7 @@ export const cashbacks: Cashbacks[] = [
   },
   {
     id: 2,
+    is_Type: 'Cashbacks',
     is_top_5: 'Yes',
     retail: 'Asos',
     slug: 'asos',

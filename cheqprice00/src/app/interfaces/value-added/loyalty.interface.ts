@@ -12,6 +12,7 @@ export enum Type {
 	Stamp_card = 'stamp_card'
 }
 export interface Loyalty extends BaseInterface00 {
+	is_Type: string,
 	image: string,
 	type01: Type[],
 	describe00?: string,
