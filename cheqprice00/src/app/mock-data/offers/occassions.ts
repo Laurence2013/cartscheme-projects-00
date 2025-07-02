@@ -3,6 +3,7 @@ import { Occassions } from '../../interfaces/offers/occassions.interface';
 export const occassions: Occassions[] = [
 	{
 		id: 5,
+    is_top_5: 'Yes',
 		retail: 'Foot Locker',
 		slug: 'foot_locker',
 		title: "Any birthday's this month",

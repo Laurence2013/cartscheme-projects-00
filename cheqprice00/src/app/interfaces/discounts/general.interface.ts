@@ -1,10 +1,7 @@
-// This is the Discounts in general
+import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
 
-export interface General {
-	id: number;
-	retail: string;
-	slug: string;
-	discount: string;
-	title: string;
-	link: string;
+// This is the Discounts in general
+export interface General extends BaseInterface00 {
+	discount: string,
+	title: string
 }

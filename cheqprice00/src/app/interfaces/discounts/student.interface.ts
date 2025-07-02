@@ -1,8 +1,9 @@
 export interface Student {
 	id: number;
+  is_top_5: 'Yes' | 'No',
 	retail: string;
 	slug: string;
-	discount: string;
+	discount?: string;
 	title: string;
 	link: string;
 }

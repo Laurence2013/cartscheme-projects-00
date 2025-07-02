@@ -23,6 +23,7 @@ export class GetDiscountService {
 		const genDiscount$: Observable<MainDiscounts00> = getGenDiscount$.pipe(
 			map(discounts => ({
 				id: discounts.id,
+				is_top_5: discounts.is_top_5,
 				retail: discounts.retail,
 				slug: discounts.slug,
 				offer: discounts.discount,
@@ -32,6 +33,7 @@ export class GetDiscountService {
 		const staffDiscount$: Observable<MainDiscounts00> = getStaffDiscount$.pipe(
 			map(discounts => ({
 				id: discounts.id,
+				is_top_5: discounts.is_top_5,
 				retail: discounts.retail,
 				slug: discounts.slug,
 				offer: discounts.discount,

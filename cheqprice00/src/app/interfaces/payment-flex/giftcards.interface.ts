@@ -1,5 +1,6 @@
 export interface Giftcards {
 	id: number;
+  is_top_5: 'Yes' | 'No',
 	card_type: 'giftcard' | 'cashback' | 'loyalty';
 	retail: string;
 	image: string;

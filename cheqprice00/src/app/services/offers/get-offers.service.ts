@@ -25,6 +25,7 @@ export class GetOffersService {
 		const combine00$: Observable<MainOffers01> = getMultibuys$.pipe(
 			map(multibuys => ({
 				id: multibuys.id,
+				is_top_5: multibuys.is_top_5,
 				retail: multibuys.retail,
 				slug: multibuys.slug,
 				title: multibuys.title,
@@ -33,6 +34,7 @@ export class GetOffersService {
 		const combine01$: Observable<MainOffers01> = getOccassions$.pipe(
 			map(multibuys => ({
 				id: multibuys.id,
+				is_top_5: multibuys.is_top_5,
 				retail: multibuys.retail,
 				slug: multibuys.slug,
 				title: multibuys.title,
@@ -41,6 +43,7 @@ export class GetOffersService {
 		const combine02$: Observable<MainOffers01> = getSeasonal$.pipe(
 			map(multibuys => ({
 				id: multibuys.id,
+				is_top_5: multibuys.is_top_5,
 				retail: multibuys.retail,
 				slug: multibuys.slug,
 				title: multibuys.title,

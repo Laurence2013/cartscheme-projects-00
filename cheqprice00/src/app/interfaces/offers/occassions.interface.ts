@@ -1,5 +1,6 @@
 export interface Occassions {
 	id: number,
+  is_top_5: 'Yes' | 'No',
 	retail: string,
 	slug: string,
 	title: string,

@@ -3,6 +3,7 @@ import { Seasonal } from '../../interfaces/offers/seasonal.interface';
 export const seasonal: Seasonal[] = [
 	{
 		id: 3,
+    is_top_5: 'Yes',
 		retail: 'Footasylum',
 		slug: 'footasylum',
 		title: 'Summer sale for kids under 8years, half price!',
@@ -15,6 +16,7 @@ export const seasonal: Seasonal[] = [
 	},
 	{
 		id: 4,
+    is_top_5: 'Yes',
 		retail: 'Asos',
 		slug: 'asos',
 		title: 'Summer sale for kids under 8years, 25% off',

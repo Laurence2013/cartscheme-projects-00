@@ -14,7 +14,7 @@ import { MainValueAdded00 } from '../../interfaces/value-added/main-value-added0
 export class MainValueAddedService {
 
   public constructor(){}
-  public mainValueAdded(getDiscount$: Observable<Cashbacks | Loyalty | Vouchers>): Observable<MainValueAdded00> {
+  public mainValueAdded(getDiscount$: Observable<Cashbacks>): Observable<MainValueAdded00> {
 
 		const combine00$: Observable<MainValueAdded00> = getDiscount$.pipe(
 			map(discount => ({
