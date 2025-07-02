@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of, iif } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, switchMap } from 'rxjs/operators';
 
 import { Cashbacks } from '../../interfaces/value-added/cashbacks.interface';
 import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
@@ -17,9 +17,14 @@ export class MainValueAddedService {
   public mainValueAdded(getDiscount$: Observable<Cashbacks | Loyalty | Vouchers>): Observable<MainValueAdded00> {
 
 		type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
-		const test01$ = (test00$: Observable<Cashbacks | Loyalty | Vouchers>) => {
-			return test00$.pipe(map(test01 => test01.is_Type === 'Cashbacks'))
-		}
+		const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === 'Cashbacks'));
+		const test02$ = iif(
+			() => test01$(getDiscount$).pipe(
+				map(val00 => val00 === true)),
+			of(true),
+			of(false)
+		)
+
 		test01$(getDiscount$).subscribe(console.log);
 
 		const combine00$: Observable<MainValueAdded00> = getDiscount$.pipe(
