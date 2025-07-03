@@ -25,19 +25,8 @@ export class GetValueAddedService {
 		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
 		const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
 
-		this.mainValueAddedService.mainValueAdded(getCashbacks$);
+		const test00$ = this.mainValueAddedService.mainValueAdded(getCashbacks$, 'Cashbacks');
 
-		const combine00$: Observable<MainValueAdded00> = getCashbacks$.pipe(
-			map(value_added => ({
-				id: value_added.id,
-				is_top_5: value_added.is_top_5,
-				retail: value_added.retail,
-				slug: value_added.slug,
-				partner_site: value_added.partner_site,
-				link: value_added.link,
-				image: value_added.image,
-				date: value_added.date
-			})));
 		const combine01$: Observable<MainValueAdded00> = getLoyalty$.pipe(
 			map(value_added => ({
 				id: value_added.id,
@@ -60,7 +49,8 @@ export class GetValueAddedService {
 				image: value_added.image,
 				date: value_added.date
 			})));
-		const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
+		//const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
+		const result00$ = merge(test00$, combine01$, combine02$).pipe(toArray());	
 		return result00$;
 	}
 }
