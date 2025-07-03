@@ -49,6 +49,7 @@ export class GetValueAddedService {
 				image: value_added.image,
 				date: value_added.date
 			})));
+		//const result00$ = merge(combine01$, combine02$).pipe(toArray());	
 		//const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
 		const result00$ = merge(test00$, combine01$, combine02$).pipe(toArray());	
 		return result00$;
