@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of, iif, mergeMap, EMPTY } from 'rxjs';
-import { tap, map, filter, take, switchMap } from 'rxjs/operators';
+import { tap, map, filter, take } from 'rxjs/operators';
 
 import { Cashbacks } from '../../interfaces/value-added/cashbacks.interface';
 import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
@@ -29,17 +29,18 @@ export class MainValueAddedService {
 	private getValueAdded(
 		getCashback_Loyalty_Voucher$: Observable<Cashbacks | Loyalty | Vouchers>, 
 		valueType: string,
-		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>): Observable<MainValueAdded00> {
-			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
-			const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === valueType));
-			const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
-				take(1),
-				mergeMap((value: boolean) => iif(
-					() => value === true,
-					functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<any>),
-					EMPTY
-				)));
-			return test02$;
+		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>): 
+			Observable<MainValueAdded00> {
+				type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
+				const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === valueType));
+				const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
+					take(1),
+					mergeMap((value: boolean) => iif(
+						() => value === true,
+						functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<any>),
+						EMPTY
+					)));
+				return test02$;
 	}
 	private getLoyalty(
 		test01$: Observable<boolean>, 
@@ -112,5 +113,19 @@ export class MainValueAddedService {
 				))
 			);
 			return test02$;
+	}
+	private get_hello(){
+	 console.log(true);
+	}
+	private get_IIF(test00$: Observable<boolean>): Observable<boolean> {
+		const test02$ = test00$.pipe(
+			take(1),
+			mergeMap((test00: boolean) => iif(
+				() => test00 === true,
+				of(true),
+				of(false)
+			))
+		);
+	 return test02$;
 	}
 }
