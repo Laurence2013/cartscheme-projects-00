@@ -25,7 +25,8 @@ export class GetValueAddedService {
 		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
 		const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
 
-		const test00$ = this.mainValueAddedService.mainValueAdded(getCashbacks$, 'Cashbacks');
+		const test00$ = this.mainValueAddedService.mainValueAdded01(getCashbacks$, EMPTY, 'Cashbacks');
+		const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, 'Loyalty');
 
 		const combine01$: Observable<MainValueAdded00> = getLoyalty$.pipe(
 			map(value_added => ({
@@ -50,8 +51,7 @@ export class GetValueAddedService {
 				date: value_added.date
 			})));
 		//const result00$ = merge(combine01$, combine02$).pipe(toArray());	
-		//const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
-		const result00$ = merge(test00$, combine01$, combine02$).pipe(toArray());	
+		const result00$ = merge(test00$, test01$, combine02$).pipe(toArray());	
 		return result00$;
 	}
 }
