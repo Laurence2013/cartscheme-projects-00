@@ -17,15 +17,17 @@ export class MainValueAddedService {
 	public mainValueAdded01(
 		getCashbacks$: Observable<Cashbacks>,
 		getLoyalty$: Observable<Loyalty>,
+		getVouchers$: Observable<Vouchers>,
 		valueType: string): Observable<MainValueAdded00> {
 			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
 
 			if(valueType === 'Cashbacks'){return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks)};
 			if(valueType === 'Loyalty'){return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty)};
+			if(valueType === 'Vouchers'){return this.getValueAdded(getVouchers$, valueType, this.getVouchers)};
 			return EMPTY;
 	}
 	private getValueAdded(
-		getCashback_Loyalty_Voucher$: Observable<Cashbacks | Loyalty>, 
+		getCashback_Loyalty_Voucher$: Observable<Cashbacks | Loyalty | Vouchers>, 
 		valueType: string,
 		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>): Observable<MainValueAdded00> {
 			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
@@ -83,6 +85,29 @@ export class MainValueAddedService {
 				mergeMap((test00: boolean) => iif(
 					() => test00 === true,
 					combine00$,
+					EMPTY
+				))
+			);
+			return test02$;
+	}
+	private getVouchers(
+		test01$: Observable<boolean>, 
+		getValueAdded$: Observable<Vouchers>): Observable<MainValueAdded00> {
+			const combine02$: Observable<MainValueAdded00> = getValueAdded$.pipe(
+				map(value_added => ({
+					id: value_added.id,
+					is_top_5: value_added.is_top_5,
+					retail: value_added.retail,
+					slug: value_added.slug,
+					description: value_added.description,
+					image: value_added.image,
+					date: value_added.date
+				})));
+			const test02$ = test01$.pipe(
+				take(1),
+				mergeMap((test00: boolean) => iif(
+					() => test00 === true,
+					combine02$,
 					EMPTY
 				))
 			);

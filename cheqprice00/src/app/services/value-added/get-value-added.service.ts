@@ -25,33 +25,10 @@ export class GetValueAddedService {
 		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
 		const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
 
-		const test00$ = this.mainValueAddedService.mainValueAdded01(getCashbacks$, EMPTY, 'Cashbacks');
-		const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, 'Loyalty');
-
-		const combine01$: Observable<MainValueAdded00> = getLoyalty$.pipe(
-			map(value_added => ({
-				id: value_added.id,
-				is_top_5: value_added.is_top_5,
-				retail: value_added.retail,
-				slug: value_added.slug,
-				type01: value_added.type01,
-				description: value_added.describe00,
-				link: value_added.link,
-				image: value_added.image,
-				date: value_added.date
-			})));
-		const combine02$: Observable<MainValueAdded00> = getVouchers$.pipe(
-			map(value_added => ({
-				id: value_added.id,
-				is_top_5: value_added.is_top_5,
-				retail: value_added.retail,
-				slug: value_added.slug,
-				description: value_added.description,
-				image: value_added.image,
-				date: value_added.date
-			})));
-		//const result00$ = merge(combine01$, combine02$).pipe(toArray());	
-		const result00$ = merge(test00$, test01$, combine02$).pipe(toArray());	
+		const test00$ = this.mainValueAddedService.mainValueAdded01(getCashbacks$, EMPTY, EMPTY, 'Cashbacks');
+		const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, EMPTY, 'Loyalty');
+		const test02$ = this.mainValueAddedService.mainValueAdded01(EMPTY, EMPTY, getVouchers$, 'Vouchers');
+		const result00$ = merge(test00$, test01$, test02$).pipe(toArray());	
 		return result00$;
 	}
 }
