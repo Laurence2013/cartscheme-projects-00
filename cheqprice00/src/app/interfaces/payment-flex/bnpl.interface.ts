@@ -1,6 +1,5 @@
 import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
 
-export interface Bnpl extends BaseInterface00 {}
 export interface BnplInfo {
 	bnpl_id: number;
 	image: string;
@@ -13,4 +12,7 @@ export interface BnplInfo {
 	installment_type_desc: string;
 	late_fees: 'Yes' | 'No';
 	late_fees_desc: string;
+}
+export interface Bnpl extends BaseInterface00 {
+	bnpl_info: Array<BnplInfo>,
 }
