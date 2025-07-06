@@ -21,13 +21,7 @@ export class ValueAddedService {
   private getVouchers00: Vouchers[] = vouchers;
 
   public constructor(){}
-  public getCashbacks(){
-    return from(this.getCashbacks00).pipe(take(2));
-  }
-  public getLoyalty(){
-    return from(this.getLoyalty00).pipe(take(2));
-  }
-  public getVouchers(){
-    return from(this.getVouchers00).pipe(take(1));
-  }
+  public getCashbacks(){return from(this.getCashbacks00).pipe(take(2))}
+  public getLoyalty(){return from(this.getLoyalty00).pipe(take(2))}
+  public getVouchers(){return from(this.getVouchers00).pipe(take(1))}
 }

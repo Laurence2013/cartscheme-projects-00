@@ -45,11 +45,9 @@ export class HomePage implements OnInit {
 	public top_multibuys00: Signal<MainOffers01[]> = toSignal(this.getOffers(), {initialValue: []});
 	public top_value_added00: Signal<MainValueAdded00[]> = toSignal(this.getValueAdded(), {initialValue: []});
 
-  public constructor(){
-		addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline});
-	}
+  public constructor(){addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline})}
   public ngOnInit(){}
-	public getGenDiscount(): Observable<MainDiscounts00[]> { return this.getDiscountService.getGenDiscounts() }
-	public getOffers(): Observable<MainOffers01[]> { return this.getOffersService.getOffers() }
-	public getValueAdded(): Observable<MainValueAdded00[]> { return this.getValueAddedService.getValueAdded() }
+	public getGenDiscount(): Observable<MainDiscounts00[]> {return this.getDiscountService.getGenDiscounts()}
+	public getOffers(): Observable<MainOffers01[]> {return this.getOffersService.getOffers()}
+	public getValueAdded(): Observable<MainValueAdded00[]> {return this.getValueAddedService.getValueAdded()}
 }

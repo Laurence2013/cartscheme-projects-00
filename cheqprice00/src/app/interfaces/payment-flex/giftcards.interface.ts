@@ -1,8 +1,6 @@
-export interface Giftcards {
-	id: number;
-  is_top_5: 'Yes' | 'No',
-	card_type: 'giftcard' | 'cashback' | 'loyalty';
-	retail: string;
+import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
+
+export interface Giftcards extends BaseInterface00 {
 	image: string;
 	website: string;
 	description: string;
@@ -10,5 +8,5 @@ export interface Giftcards {
 	gift_values: number[];
 	quantity: number[];
 	availability: 'eCard' | 'Physical' | 'Both';
-	validity: Date;
+	valid_to: Date;
 }

@@ -39,6 +39,10 @@ export const routes: Routes = [
 				path: 'value-added',
 				loadComponent: () => import('./pages/value-added/value-added.page').then( m => m.ValueAddedPage)
 			},
+			{
+				path: 'payment-flex',
+				loadComponent: () => import('./pages/payment-flex/payment-flex.page').then( m => m.PaymentFlexPage)
+			},
 		]
   },
 ];
