@@ -21,17 +21,19 @@ export class MainValueAddedService {
 		valueType: string): Observable<MainValueAdded00> {
 			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
 
-			if(valueType === 'Cashbacks'){return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks)};
-			if(valueType === 'Loyalty'){return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty)};
-			if(valueType === 'Vouchers'){return this.getValueAdded(getVouchers$, valueType, this.getVouchers)};
+			if(valueType === 'Cashbacks'){return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks, this.get_IIF)};
+			if(valueType === 'Loyalty'){return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty, this.get_IIF)};
+			if(valueType === 'Vouchers'){return this.getValueAdded(getVouchers$, valueType, this.getVouchers, this.get_IIF)};
 			return EMPTY;
 	}
 	private getValueAdded(
 		getCashback_Loyalty_Voucher$: Observable<Cashbacks | Loyalty | Vouchers>, 
 		valueType: string,
-		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>): 
+		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>,
+		get_iif$: (obs02: Observable<boolean>, obs03: Observable<any>) => Observable<any>): 
 			Observable<MainValueAdded00> {
 				type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
+
 				const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === valueType));
 				const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
 					take(1),
@@ -40,7 +42,8 @@ export class MainValueAddedService {
 						functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<any>),
 						EMPTY
 					)));
-				return test02$;
+					const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$);
+				return test03$;
 	}
 	private getLoyalty(
 		test01$: Observable<boolean>, 
@@ -57,15 +60,7 @@ export class MainValueAddedService {
 					image: value_added.image,
 					date: value_added.date
 				})));
-				const test02$ = test01$.pipe(
-					take(1),
-					mergeMap((test00: boolean) => iif(
-						() => test00 === true,
-						combine01$,
-						EMPTY
-					))
-				);
-				return test02$;
+				return combine01$;
 		}
 	private getCashbacks(
 		test01$: Observable<boolean>, 
@@ -81,15 +76,7 @@ export class MainValueAddedService {
 					image: discount.image,
 					date: discount.date
 				})));
-			const test02$ = test01$.pipe(
-				take(1),
-				mergeMap((test00: boolean) => iif(
-					() => test00 === true,
-					combine00$,
-					EMPTY
-				))
-			);
-			return test02$;
+			return combine00$;
 	}
 	private getVouchers(
 		test01$: Observable<boolean>, 
@@ -104,25 +91,14 @@ export class MainValueAddedService {
 					image: value_added.image,
 					date: value_added.date
 				})));
-			const test02$ = test01$.pipe(
-				take(1),
-				mergeMap((test00: boolean) => iif(
-					() => test00 === true,
-					combine02$,
-					EMPTY
-				))
-			);
-			return test02$;
+			return combine02$;
 	}
-	private get_hello(){
-	 console.log(true);
-	}
-	private get_IIF(test00$: Observable<boolean>): Observable<boolean> {
+	private get_IIF(test00$: Observable<boolean>, test01$: Observable<any>): Observable<boolean> {
 		const test02$ = test00$.pipe(
 			take(1),
 			mergeMap((test00: boolean) => iif(
 				() => test00 === true,
-				of(true),
+				test01$,
 				of(false)
 			))
 		);
