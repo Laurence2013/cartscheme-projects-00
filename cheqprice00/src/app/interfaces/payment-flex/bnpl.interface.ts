@@ -14,5 +14,6 @@ export interface BnplInfo {
 	late_fees_desc: string;
 }
 export interface Bnpl extends BaseInterface00 {
+  is_Type: string;
 	bnpl_info: Array<BnplInfo>,
 }

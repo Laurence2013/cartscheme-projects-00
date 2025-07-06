@@ -1,6 +1,7 @@
 import { BaseInterface00 } from '../base-interfaces/base-interface00.interface';
 
 export interface Giftcards extends BaseInterface00 {
+  is_Type: string;
 	image: string;
 	website: string;
 	description: string;

@@ -3,6 +3,7 @@ import { Giftcards } from '../../interfaces/payment-flex/giftcards.interface';
 export const giftcards: Giftcards[] = [
 	{
 		id: 1,
+    is_Type: 'Giftcards',
 		is_top_5: 'Yes',
 		retail: 'Prezzee',
 		slug: 'prezzee',

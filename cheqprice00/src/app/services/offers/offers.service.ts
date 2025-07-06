@@ -29,13 +29,7 @@ export class OffersService {
   public constructor(){}
   public getBundles(){}
   public getLimitedTime(){}
-  public getMultibuys(): Observable<Multibuys>{
-    return from(this.getMultibuys00).pipe(take(2));
-  }
-  public getOccasssions(){
-    return from(this.getOccasssions00).pipe(take(1))
-  }
-  public getSeasonal(){
-    return from(this.getSeasonal00).pipe(take(2))
-  }
+  public getMultibuys(): Observable<Multibuys>{return from(this.getMultibuys00).pipe(take(2))}
+  public getOccasssions(){return from(this.getOccasssions00).pipe(take(1))}
+  public getSeasonal(){return from(this.getSeasonal00).pipe(take(2))}
 }
