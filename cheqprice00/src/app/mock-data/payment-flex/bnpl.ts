@@ -25,6 +25,7 @@ export const bnpl: Bnpl[] = [
 	},
 	{
 		id: 2,
+    is_Type: 'Giftcards',
 		is_top_5: 'Yes',
 		retail: 'JD Sports',
     slug: 'jd_sports',

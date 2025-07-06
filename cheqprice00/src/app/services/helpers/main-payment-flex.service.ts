@@ -13,18 +13,18 @@ import { PaymentFlex00 } from '../../interfaces/payment-flex/payment-flex00.inte
 export class MainPaymentFlexService {
 
   public constructor(){}
-  public getMainPaymentFlex00(
+  public mainPaymentFlex(
     getBnpl$: Observable<Bnpl>,
     getGiftcards$: Observable<Giftcards>,
     valueType: string
   ): Observable<PaymentFlex00> {
     type Test00$ = Observable<Bnpl | Giftcards>;
 
-    if(valueType === 'Bnpl'){};
+    if(valueType === 'Bnpl'){return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.get_IIF)};
     if(valueType === 'Giftcards'){}
     return EMPTY;
   }
-  public getMainPaymentFlex01(
+  public getMainPaymentFlex(
     getBnpl_Giftcards$: Observable<Bnpl | Giftcards>,
     valueType: string,
 		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<PaymentFlex00>,
@@ -45,9 +45,29 @@ export class MainPaymentFlexService {
     return EMPTY;
   }
   public getBnpl(test00$: Observable<boolean>, getPaymentFlex$: Observable<Bnpl>): Observable<PaymentFlex00> {
-    const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe()
-    );
+    const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe(
+    map((cashbacks: Bnpl) => ({
+      id: cashbacks.id,
+      is_Type: cashbacks.is_Type,
+      is_top_5: cashbacks.is_top_5,
+      retail: cashbacks.retail,
+      slug: cashbacks.slug,
+      bnpl_info: cashbacks.bnpl_info,
+      link: cashbacks.link,
+      date: cashbacks.date
+    })));
     return EMPTY;
   }
   public getGiftcards(){}
+	private get_IIF(test00$: Observable<boolean>, test01$: Observable<any>): Observable<boolean> {
+		const test02$ = test00$.pipe(
+			take(1),
+			mergeMap((test00: boolean) => iif(
+				() => test00 === true,
+				test01$,
+				of(false)
+			))
+		);
+	 return test02$;
+	}
 }
