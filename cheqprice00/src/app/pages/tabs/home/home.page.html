@@ -112,12 +112,11 @@
 			[viewAllTemplate]='viewAllPaymentFlexTemplate'
 			></app-horizontal-list>
 
-		<ng-template #paymentFlexTemplate let-valueAdded>
-			Hello
-			<!--<app-top-value-added [topValueAdded]='valueAdded'></app-top-value-added>-->
+		<ng-template #paymentFlexTemplate let-paymentFlex>
+			<app-top-payment-flex [topPaymentFlex]='paymentFlex'>Hello</app-top-payment-flex>
 		</ng-template>
 		<ng-template #viewAllPaymentFlexTemplate>
-			View All Test
+			View All
 			<!--<app-top-value-added
 				[isViewAll]='true'
 				[viewAllRoute]="['/tabs/value-added']"

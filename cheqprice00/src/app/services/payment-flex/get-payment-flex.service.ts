@@ -23,9 +23,10 @@ export class GetPaymentFlexService {
 		const getCashbacks$: Observable<Bnpl> = this.paymentFlexService.getBnpl();
     const getGiftCards$: Observable<Giftcards> = this.paymentFlexService.getGiftcards();
 
-		const test00$ = this.mainPaymentFlexService.mainPaymentFlex(getCashbacks$, EMPTY, 'Bnpl');
-		const test01$ = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'Giftcards`');
+		const test00$ = this.mainPaymentFlexService.mainPaymentFlex(getCashbacks$, EMPTY, 'bnpl');
+		//const test01$ = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'Giftcards`');
+    const result00$ = merge(test00$).pipe(toArray());
 
-    return EMPTY;
+    return result00$;
   }
 }

@@ -20,8 +20,8 @@ export class MainPaymentFlexService {
   ): Observable<PaymentFlex00> {
     type Test00$ = Observable<Bnpl | Giftcards>;
 
-    if(valueType === 'Bnpl'){return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.get_IIF)};
-    if(valueType === 'Giftcards'){}
+    if(valueType === 'bnpl'){return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.get_IIF)};
+    if(valueType === 'giftcards'){}
     return EMPTY;
   }
   public getMainPaymentFlex(
@@ -40,21 +40,10 @@ export class MainPaymentFlexService {
         functionType(test01$(getBnpl_Giftcards$), getBnpl_Giftcards$ as Observable<any>),
         EMPTY
       )));
-      const test03$ = get_iif$(test01$(getBnpl_Giftcards$),test02$);
-
-    return EMPTY;
+    const test03$ = get_iif$(test01$(getBnpl_Giftcards$),test02$);
+    return test03$;
   }
   public getBnpl(test00$: Observable<boolean>, getPaymentFlex$: Observable<Bnpl>): Observable<PaymentFlex00> {
-
-    const test09$ = getPaymentFlex$.pipe(
-      mergeMap(test => iif(
-        () => test.is_Type === 'bnpl',
-        of('Is BNPL'),
-        of('Is Giftcards')
-      ))
-    );
-    test09$.subscribe(console.log);
-
     const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe(
     map((cashbacks: Bnpl) => ({
       id: cashbacks.id,
@@ -66,10 +55,11 @@ export class MainPaymentFlexService {
       link: cashbacks.link,
       date: cashbacks.date
     })));
-    combine00$.subscribe(console.log);
+    return combine00$
+  }
+  public getGiftcards(test00$: Observable<boolean>, getPaymentFlex$: Observable<Giftcards>): Observable<PaymentFlex00> {
     return EMPTY;
   }
-  public getGiftcards(){}
 	private get_IIF(test00$: Observable<boolean>, test01$: Observable<any>): Observable<boolean> {
 		const test02$ = test00$.pipe(
 			take(1),
