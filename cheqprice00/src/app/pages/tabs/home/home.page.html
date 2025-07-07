@@ -94,5 +94,35 @@
 				></app-top-value-added>
 		</ng-template>
 	</ion-list>
+
+	<!-- Payment Flex list -->
+	<ion-list color='light'>
+		<app-list-header
+			heading='Payment Flexibility'
+			slug='payment-flex'
+			buttonName='View All'
+			buttonIcon='arrow-forward-outline'
+			buttonColour='medium'
+			></app-list-header>
+
+		<app-horizontal-list
+			[items]='top_payment_flex00()'
+			[itemTemplate]='paymentFlexTemplate'
+			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
+			[viewAllTemplate]='viewAllPaymentFlexTemplate'
+			></app-horizontal-list>
+
+		<ng-template #paymentFlexTemplate let-valueAdded>
+			Hello
+			<!--<app-top-value-added [topValueAdded]='valueAdded'></app-top-value-added>-->
+		</ng-template>
+		<ng-template #viewAllPaymentFlexTemplate>
+			View All Test
+			<!--<app-top-value-added
+				[isViewAll]='true'
+				[viewAllRoute]="['/tabs/value-added']"
+				></app-top-value-added>-->
+		</ng-template>
+	</ion-list>
 </ion-content>
 

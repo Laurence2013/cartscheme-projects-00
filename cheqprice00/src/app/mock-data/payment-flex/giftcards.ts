@@ -3,7 +3,7 @@ import { Giftcards } from '../../interfaces/payment-flex/giftcards.interface';
 export const giftcards: Giftcards[] = [
 	{
 		id: 1,
-    is_Type: 'Giftcards',
+    is_Type: 'giftcards',
 		is_top_5: 'Yes',
 		retail: 'Prezzee',
 		slug: 'prezzee',
@@ -19,6 +19,7 @@ export const giftcards: Giftcards[] = [
 	},
 	{
 		id: 2,
+    is_Type: 'giftcards',
 		is_top_5: 'Yes',
 		retail: 'Love2Shop',
 		slug: 'love2shop',
@@ -34,6 +35,7 @@ export const giftcards: Giftcards[] = [
 	},
 	{
 		id: 3,
+    is_Type: 'giftcards',
 		is_top_5: 'Yes',
 		retail: 'Asos',
 		slug: 'asos',
@@ -49,6 +51,7 @@ export const giftcards: Giftcards[] = [
 	},
 	{
 		id: 4,
+    is_Type: 'giftcards',
 		is_top_5: 'No',
 		retail: 'River Island',
 		slug: 'riverIsland',
@@ -64,6 +67,7 @@ export const giftcards: Giftcards[] = [
 	},
 	{
 		id: 5,
+    is_Type: 'giftcards',
 		is_top_5: 'No',
 		retail: 'IKEA',
 		slug: 'ikea',

@@ -3,7 +3,7 @@ import { Bnpl } from '../../interfaces/payment-flex/bnpl.interface';
 export const bnpl: Bnpl[] = [
 	{
 		id: 1,
-    is_Type: 'Bnpl',
+    is_Type: 'bnpl',
 		is_top_5: 'Yes',
 		retail: 'Sports Direct',
     slug: 'sports_direct',
@@ -25,7 +25,7 @@ export const bnpl: Bnpl[] = [
 	},
 	{
 		id: 2,
-    is_Type: 'Giftcards',
+    is_Type: 'bnpl',
 		is_top_5: 'Yes',
 		retail: 'JD Sports',
     slug: 'jd_sports',

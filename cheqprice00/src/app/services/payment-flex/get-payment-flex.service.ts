@@ -19,7 +19,7 @@ export class GetPaymentFlexService {
   public mainPaymentFlexService = inject(MainPaymentFlexService);
 
   public constructor(){}
-  public getPaymentFlex(): Observable<PaymentFlex00> {
+  public getPaymentFlex(): Observable<PaymentFlex00[]> {
 		const getCashbacks$: Observable<Bnpl> = this.paymentFlexService.getBnpl();
     const getGiftCards$: Observable<Giftcards> = this.paymentFlexService.getGiftcards();
 

@@ -45,6 +45,16 @@ export class MainPaymentFlexService {
     return EMPTY;
   }
   public getBnpl(test00$: Observable<boolean>, getPaymentFlex$: Observable<Bnpl>): Observable<PaymentFlex00> {
+
+    const test09$ = getPaymentFlex$.pipe(
+      mergeMap(test => iif(
+        () => test.is_Type === 'bnpl',
+        of('Is BNPL'),
+        of('Is Giftcards')
+      ))
+    );
+    test09$.subscribe(console.log);
+
     const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe(
     map((cashbacks: Bnpl) => ({
       id: cashbacks.id,
@@ -56,6 +66,7 @@ export class MainPaymentFlexService {
       link: cashbacks.link,
       date: cashbacks.date
     })));
+    combine00$.subscribe(console.log);
     return EMPTY;
   }
   public getGiftcards(){}
