@@ -21,7 +21,7 @@ export class MainPaymentFlexService {
     type Test00$ = Observable<Bnpl | Giftcards>;
 
     if(valueType === 'bnpl'){return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.get_IIF)};
-    if(valueType === 'giftcards'){}
+    if(valueType === 'giftcards'){return this.getMainPaymentFlex(getGiftcards$, valueType, this.getGiftcards, this.get_IIF)};
     return EMPTY;
   }
   public getMainPaymentFlex(
@@ -58,7 +58,25 @@ export class MainPaymentFlexService {
     return combine00$
   }
   public getGiftcards(test00$: Observable<boolean>, getPaymentFlex$: Observable<Giftcards>): Observable<PaymentFlex00> {
-    return EMPTY;
+    const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe(
+      map((giftcards: Giftcards) => ({
+        id: giftcards.id,
+        is_Type: giftcards.is_Type,
+        is_top_5: giftcards.is_top_5,
+        retail: giftcards.retail,
+        slug: giftcards.slug,
+        link: giftcards.link,
+        image: giftcards.image,
+        website: giftcards.website,
+        description: giftcards.description,
+        choosing_type: giftcards.choosing_type,
+        gift_values: giftcards.gift_values,
+        quantity: giftcards.quantity,
+        availability: giftcards.availability,
+        valid_to: giftcards.valid_to,
+        date: giftcards.date
+      })));
+    return combine00$;
   }
 	private get_IIF(test00$: Observable<boolean>, test01$: Observable<any>): Observable<boolean> {
 		const test02$ = test00$.pipe(

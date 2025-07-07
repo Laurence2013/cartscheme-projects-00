@@ -24,9 +24,8 @@ export class GetPaymentFlexService {
     const getGiftCards$: Observable<Giftcards> = this.paymentFlexService.getGiftcards();
 
 		const test00$ = this.mainPaymentFlexService.mainPaymentFlex(getCashbacks$, EMPTY, 'bnpl');
-		//const test01$ = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'Giftcards`');
-    const result00$ = merge(test00$).pipe(toArray());
-
+		const test01$ = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'giftcards');
+    const result00$ = merge(test00$, test01$).pipe(toArray());
     return result00$;
   }
 }

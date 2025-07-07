@@ -1,3 +1,27 @@
-<p>
-  top-payment-flex works!
-</p>
+<ion-card>
+	@if(!isViewAll()){
+		<ion-thumbnail>
+			<ion-badge color='dark'>
+				{{ topPaymentFlex()?.retail }}
+			</ion-badge>
+			@if(topPaymentFlex()?.is_Type === 'bnpl'){
+				<img class='discount-img' [src]='topPaymentFlex()?.bnpl_info[0]?.image' />
+			}
+			@if(topPaymentFlex()?.is_Type === 'giftcards'){
+				{{ topPaymentFlex()?.image }}
+			<!--<img class='discount-img' [src]='topPaymentFlex()?.image' />-->
+			}
+		</ion-thumbnail>
+
+		<ion-item lines='none'>
+			<ion-label>
+				<ion-text color='dark'>
+					<!--{{ topPaymentFlex()?.title }}-->
+				</ion-text>
+			</ion-label>
+			<ion-button fill="clear" slot="end" [routerLink]="['/deals', topPaymentFlex()?.slug]">View Offers</ion-button>
+		</ion-item>
+	}@else{
+	<app-view-all-card [route]='viewAllRoute()'></app-view-all-card>
+	}
+</ion-card>
