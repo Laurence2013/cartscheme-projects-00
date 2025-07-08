@@ -26,6 +26,7 @@ export class GetPaymentFlexService {
 		const test00$ = this.mainPaymentFlexService.mainPaymentFlex(getCashbacks$, EMPTY, 'bnpl');
 		const test01$ = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'giftcards');
     const result00$ = merge(test00$, test01$).pipe(toArray());
+    result00$.subscribe(console.log);
     return result00$;
   }
 }
