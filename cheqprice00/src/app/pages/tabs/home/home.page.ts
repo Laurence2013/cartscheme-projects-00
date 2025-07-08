@@ -20,7 +20,7 @@ import { TopPaymentFlexComponent } from '../../../components/top-payment-flex/to
 import { MainValueAdded00 } from '../../../interfaces/value-added/main-value-added00.interface';
 import { MainOffers01 } from '../../../interfaces/offers/main-offers01.interface';
 import { MainDiscounts00 } from '../../../interfaces/discounts/main-discounts00.interface';
-import { PaymentFlex00 } from '../../../interfaces/payment-flex/payment-flex00.interface';
+import { PaymentFlex00, PaymentFlex01 } from '../../../interfaces/payment-flex/payment-flex00.interface';
 
 import { GetDiscountService } from '../../../services/discounts/get-discount.service';
 import { GetOffersService } from '../../../services/offers/get-offers.service';
@@ -48,12 +48,12 @@ export class HomePage implements OnInit {
 	public top_general_discounts00: Signal<MainDiscounts00[]> = toSignal(this.getGenDiscount(), {initialValue: []});
 	public top_multibuys00: Signal<MainOffers01[]> = toSignal(this.getOffers(), {initialValue: []});
 	public top_value_added00: Signal<MainValueAdded00[]> = toSignal(this.getValueAdded(), {initialValue: []});
-	public top_payment_flex00: Signal<PaymentFlex00[]> = toSignal(this.getPaymentFlex(), {initialValue: []});
+	public top_payment_flex00: Signal<PaymentFlex01[]> = toSignal(this.getPaymentFlex(), {initialValue: []});
 
   public constructor(){addIcons({paperPlaneOutline, searchOutline, arrowForwardOutline})}
   public ngOnInit(){}
 	public getGenDiscount(): Observable<MainDiscounts00[]> {return this.getDiscountService.getGenDiscounts()}
 	public getOffers(): Observable<MainOffers01[]> {return this.getOffersService.getOffers()}
 	public getValueAdded(): Observable<MainValueAdded00[]> {return this.getValueAddedService.getValueAdded()}
-	public getPaymentFlex(): Observable<PaymentFlex00[]> {return this.getPaymentFlexService.getPaymentFlex()}
+	public getPaymentFlex(): Observable<PaymentFlex01[]> {return this.getPaymentFlexService.getPaymentFlex()}
 }

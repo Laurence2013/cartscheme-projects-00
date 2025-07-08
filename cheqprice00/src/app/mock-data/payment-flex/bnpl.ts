@@ -9,7 +9,7 @@ export const bnpl: Bnpl[] = [
     slug: 'sports_direct',
 		bnpl_info: [{
 			bnpl_id: 1,
-			image: 'assets/top-discounts/20-giftcard.jpg',
+			image: 'assets/top-discounts/20-percent-discount.jpg',
 			website: 'www.some-website.com',
 			bnpl_partner: 'Frasers',
 			bnpl_desc: 'Lorem BNPL Description ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
@@ -32,7 +32,7 @@ export const bnpl: Bnpl[] = [
 		bnpl_info: [
 			{
 				bnpl_id: 1,
-				image: 'assets/top-discounts/20-giftcard-00.jpg',
+				image: 'assets/top-discounts/20-percent-discount-00.jpg',
 				website: 'www.some-website.com',
 				bnpl_partner: 'Klarna',
 				bnpl_desc: 'Lorem BNPL Description ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
@@ -45,7 +45,7 @@ export const bnpl: Bnpl[] = [
 			},
 			{
 				bnpl_id: 2,
-				image: 'assets/top-discounts/20-giftcard-00.jpg',
+				image: 'assets/top-discounts/30-percent-discount-00.jpg',
 				website: 'www.some-website.com',
 				bnpl_partner: 'Klarna',
 				bnpl_desc: 'Lorem BNPL Description ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',

@@ -15,5 +15,6 @@ export interface BnplInfo {
 }
 export interface Bnpl extends BaseInterface00 {
   is_Type: string;
-	bnpl_info: Array<BnplInfo>,
+	bnpl_info: Array<BnplInfo>;
+	choosing_type?: 'Myself' | 'Someone else'
 }

@@ -2,14 +2,16 @@
 	@if(!isViewAll()){
 		<ion-thumbnail>
 			<ion-badge color='dark'>
-				{{ topPaymentFlex()?.retail }}
+				{{ topPaymentFlex()?.info?.retail }}
 			</ion-badge>
-			@if(topPaymentFlex()?.is_Type === 'bnpl'){
-				<img class='discount-img' [src]='topPaymentFlex().bnpl_info[0]?.image' />
+			@if(topPaymentFlex()?.type === 'bnpl'){
+				@for(paymentFlex of topPaymentFlex()?.info?.bnpl_info; track paymentFlex){
+					<p>{{ paymentFlex.image }}</p>
+					<!--<img class='discount-img' [src]='paymentFlex.image' />-->
+				}
 			}
-			@if(topPaymentFlex()?.is_Type === 'giftcards'){
-				<p>Giftcards</p>
-				<!--<img class='discount-img' [src]='topPaymentFlex()?.image' />-->
+			@if(topPaymentFlex()?.type === 'giftcards'){
+				<p>{{ topPaymentFlex()?.info?.choosing_type }}</p>
 			}
 		</ion-thumbnail>
 

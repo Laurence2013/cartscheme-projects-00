@@ -1,11 +1,11 @@
-import { Component, OnInit, input } from '@angular/core';
+import { Component, OnInit, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { addIcons } from 'ionicons';
 import { IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge } from '@ionic/angular/standalone';
 
 import { ViewAllCardComponent } from '../../components/view-all-card/view-all-card.component';
-import { PaymentFlex00 } from '../../interfaces/payment-flex/payment-flex00.interface';
+import { PaymentFlex00, PaymentFlex01 } from '../../interfaces/payment-flex/payment-flex00.interface';
 
 @Component({
   selector: 'app-top-payment-flex',
@@ -15,7 +15,7 @@ import { PaymentFlex00 } from '../../interfaces/payment-flex/payment-flex00.inte
 })
 export class TopPaymentFlexComponent implements OnInit {
 
-	public topPaymentFlex = input<PaymentFlex00>();
+	public topPaymentFlex = input<PaymentFlex01>();
 	public isViewAll = input<boolean>(false);
 	public viewAllRoute = input<string[]>();
 

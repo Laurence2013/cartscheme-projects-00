@@ -46,8 +46,8 @@ export class MainPaymentFlexService {
   public getBnpl(test00$: Observable<boolean>, getPaymentFlex$: Observable<Bnpl>): Observable<PaymentFlex00> {
     const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe(
     map((cashbacks: Bnpl) => ({
-      id: cashbacks.id,
       is_Type: cashbacks.is_Type,
+      id: cashbacks.id,
       is_top_5: cashbacks.is_top_5,
       retail: cashbacks.retail,
       slug: cashbacks.slug,
@@ -60,8 +60,8 @@ export class MainPaymentFlexService {
   public getGiftcards(test00$: Observable<boolean>, getPaymentFlex$: Observable<Giftcards>): Observable<PaymentFlex00> {
     const combine00$: Observable<PaymentFlex00> = getPaymentFlex$.pipe(
       map((giftcards: Giftcards) => ({
-        id: giftcards.id,
         is_Type: giftcards.is_Type,
+        id: giftcards.id,
         is_top_5: giftcards.is_top_5,
         retail: giftcards.retail,
         slug: giftcards.slug,
