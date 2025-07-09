@@ -1,4 +1,5 @@
-import { Component, OnInit, input, signal } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { addIcons } from 'ionicons';
@@ -11,7 +12,10 @@ import { PaymentFlex00, PaymentFlex01 } from '../../interfaces/payment-flex/paym
   selector: 'app-top-payment-flex',
   templateUrl: './top-payment-flex.component.html',
   styleUrls: ['./top-payment-flex.component.scss'],
-	imports: [IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge, RouterLink, ViewAllCardComponent]
+	imports: [
+    IonButton, IonCard, IonItem, IonLabel, IonText, IonThumbnail, IonBadge, RouterLink, ViewAllCardComponent,
+    CommonModule
+  ]
 })
 export class TopPaymentFlexComponent implements OnInit {
 

@@ -5,13 +5,12 @@
 				{{ topPaymentFlex()?.info?.retail }}
 			</ion-badge>
 			@if(topPaymentFlex()?.type === 'bnpl'){
-				@for(paymentFlex of topPaymentFlex()?.info?.bnpl_info; track paymentFlex){
-					<p>{{ paymentFlex.image }}</p>
-					<!--<img class='discount-img' [src]='paymentFlex.image' />-->
+				@for(paymentFlex of topPaymentFlex()?.info?.bnpl_info | slice:0:1; track paymentFlex.bnpl_id){
+					<img class='discount-img' [src]='paymentFlex.image' />
 				}
 			}
 			@if(topPaymentFlex()?.type === 'giftcards'){
-				<p>{{ topPaymentFlex()?.info?.choosing_type }}</p>
+				<img class='discount-img' [src]='topPaymentFlex()?.info?.image' />
 			}
 		</ion-thumbnail>
 
