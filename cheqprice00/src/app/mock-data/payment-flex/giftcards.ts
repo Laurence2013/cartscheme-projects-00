@@ -11,7 +11,7 @@ export const giftcards: Giftcards[] = [
 		website: 'https://www.prezzee.uk/',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		choosing_type: 'Someone else',
-		gift_values: [10, 20, 30, 40, 50],
+		gift_values: [10, 20, 40, 100],
 		quantity: [1, 2, 3, 4, 5],
 		availability: 'Both',
 		valid_to: new Date('2026-09-09'),
