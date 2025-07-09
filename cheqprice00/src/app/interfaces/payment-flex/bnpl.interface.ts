@@ -18,4 +18,5 @@ export interface Bnpl extends BaseInterface00 {
 	bnpl_info: Array<BnplInfo>;
 	choosing_type?: 'Myself' | 'Someone else',
 	image?: string
+	gift_values?: string;
 }

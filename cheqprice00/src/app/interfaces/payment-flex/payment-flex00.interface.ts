@@ -9,6 +9,9 @@ interface PaymentFlexGiftcards extends BaseInterface00, Giftcards {
 export interface PaymentFlex01 {
 	type: string;
 	slug?: string;
+	title?: string;
+	gift_values?: string;
+	bnpl_partner?: string;
 	info: Bnpl | PaymentFlexGiftcards;
 }
 

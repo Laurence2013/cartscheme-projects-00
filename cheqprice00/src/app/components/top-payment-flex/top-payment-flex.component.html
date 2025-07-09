@@ -13,11 +13,17 @@
 				<img class='discount-img' [src]='topPaymentFlex()?.info?.image' />
 			}
 		</ion-thumbnail>
-
 		<ion-item lines='none'>
 			<ion-label>
 				<ion-text color='dark'>
-					<!--{{ topPaymentFlex()?.title }}-->
+					@if(topPaymentFlex()?.type === 'bnpl'){
+						@for(paymentFlex of topPaymentFlex()?.info?.bnpl_info | slice:0:1; track paymentFlex.bnpl_id){
+							<p><b>BNPL partner: </b>{{ paymentFlex.bnpl_partner }}</p>
+						}
+					}
+					@if(topPaymentFlex()?.type === 'giftcards'){
+					<p><b>Giftcards £: </b>[{{ topPaymentFlex()?.info?.gift_values }}]</p>
+					}
 				</ion-text>
 			</ion-label>
 			<ion-button fill="clear" slot="end" [routerLink]="['/deals', topPaymentFlex()?.slug]">View Offers</ion-button>
