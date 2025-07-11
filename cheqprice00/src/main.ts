@@ -22,18 +22,18 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
 
     //Firebase App initialiser
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-
+    provideFirebaseApp(() => {
+      return initializeApp(environment.firebase)
+    }),
     //Firestore setup
     provideFirestore(() => {
       const firestore = getFirestore();
       if(environment.useEmulators){
         connectFirestoreEmulator(firestore, 'localhost', 8080);
-        console.log('Firestore connected to emulator at localhost:4000');
+        console.log('Firestore connected to emulator at localhost:8080');
       };
       return firestore;
     }),
-
     //Auth setup
     provideAuth(() => {
       const auth = getAuth();
@@ -44,4 +44,4 @@ bootstrapApplication(AppComponent, {
       return auth;
     })
   ],
-}).then(_ => console.log('hello')).catch(err => console.log(err));
+}).catch(err => console.log(err));
