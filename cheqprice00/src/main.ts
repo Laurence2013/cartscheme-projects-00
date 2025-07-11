@@ -20,5 +20,28 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
+
+    //Firebase App initialiser
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+
+    //Firestore setup
+    provideFirestore(() => {
+      const firestore = getFirestore();
+      if(environment.useEmulators){
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+        console.log('Firestore connected to emulator at localhost:4000');
+      };
+      return firestore;
+    }),
+
+    //Auth setup
+    provideAuth(() => {
+      const auth = getAuth();
+      if(environment.useEmulators){
+        connectAuthEmulator(auth, 'http://localhost:9090');
+        console.log('Auth connected to emulator at http://localhost:9099');
+      }
+      return auth;
+    })
   ],
-});
+}).then(_ => console.log('hello')).catch(err => console.log(err));
