@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { DocumentData } from '@angular/fire/firestore';
 
 import { Observable, of, from } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
@@ -30,8 +31,8 @@ export class TabsPage implements OnInit {
   }
   public fetchData01(){
     this.fsDiscountsServices.getDiscounts01().pipe(
-      tap(data => console.log(data))
-    ).subscribe();
+      map(data00 => data00.map((data01: DocumentData) => data01['retail']))
+    ).subscribe(console.log);
   }
   public fetchData00(){
     this.firestoreDataService.getCollection00().pipe(
