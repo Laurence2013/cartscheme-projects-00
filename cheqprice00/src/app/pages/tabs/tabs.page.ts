@@ -9,6 +9,7 @@ import { homeOutline, albumsOutline, ellipsisHorizontalOutline } from 'ionicons/
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonText } from '@ionic/angular/standalone';
 
 import { FirestoreData00Service } from '../../services/firestore/firestore-data00.service';
+import { FsDiscountsService } from '../../services/discounts/fs-discounts.service';
 
 @Component({
   selector: 'app-tabs',
@@ -19,15 +20,22 @@ import { FirestoreData00Service } from '../../services/firestore/firestore-data0
 })
 export class TabsPage implements OnInit {
 
-  public constructor(private firestoreDataService: FirestoreData00Service){
+  public constructor(
+    private firestoreDataService: FirestoreData00Service, 
+    private fsDiscountsServices: FsDiscountsService){
 		addIcons({homeOutline,albumsOutline,ellipsisHorizontalOutline});
 	}
   public ngOnInit(){
-    this.fetchData();
+    this.fetchData01();
   }
-  public fetchData(){
+  public fetchData01(){
+    this.fsDiscountsServices.getDiscounts01().pipe(
+      tap(data => console.log(data))
+    ).subscribe();
+  }
+  public fetchData00(){
     this.firestoreDataService.getCollection00().pipe(
-      tap(data => console.log(data[0]))
+      tap(data => console.log(data))
     ).subscribe();
   }
 }

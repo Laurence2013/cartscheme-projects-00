@@ -32,7 +32,7 @@ export class GetPaymentFlexService {
       toArray(),
       map(val00 => val00.map((val: any) => ({type: val.type, info: val.info})))
     );
-    result00$.subscribe(console.log);
+    //result00$.subscribe(console.log);
     return result00$;
   }
 }
