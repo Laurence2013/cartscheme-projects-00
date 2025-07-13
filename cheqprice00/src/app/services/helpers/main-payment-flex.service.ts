@@ -85,8 +85,7 @@ export class MainPaymentFlexService {
 				() => test00 === true,
 				test01$,
 				of(false)
-			))
-		);
+			)));
 	 return test02$;
 	}
 }

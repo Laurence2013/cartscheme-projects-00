@@ -10,7 +10,9 @@ import { MainDiscounts00 } from '../../interfaces/discounts/main-discounts00.int
 
 import { DiscountsService } from './discounts.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+  providedIn: 'root'
+})
 export class GetDiscountService {
 
 	private discountsService = inject(DiscountsService);
@@ -41,5 +43,31 @@ export class GetDiscountService {
 			})));
 		const result00$ = merge(generalDiscouns$, staffDiscounts$).pipe(toArray());
 		return result00$;
+	}
+	public getGenDiscounts00(): Observable<MainDiscounts00[]> {
+		const getGenDiscount$: Observable<General> = this.discountsService.getGeneralDiscounts00();
+		const getStaffDiscount$: Observable<Staff> = this.discountsService.getStaffDiscounts00();
+		const genDiscount$: Observable<MainDiscounts00> = getGenDiscount$.pipe(
+			map(discounts => ({
+				id: discounts.id,
+				is_top_5: discounts.is_top_5,
+				retail: discounts.retail,
+				slug: discounts.slug,
+				offer: discounts.discount,
+				title: discounts.title,
+				link: discounts.link
+			})));
+		const staffDiscount$: Observable<MainDiscounts00> = getStaffDiscount$.pipe(
+			map(discounts => ({
+				id: discounts.id,
+				is_top_5: discounts.is_top_5,
+				retail: discounts.retail,
+				slug: discounts.slug,
+				offer: discounts.discount,
+				title: discounts.title,
+				link: discounts.link
+			})));
+		const result01$ = merge(staffDiscount$, genDiscount$).pipe(toArray());
+		return result01$;
 	}
 }

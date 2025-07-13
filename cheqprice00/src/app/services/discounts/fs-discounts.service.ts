@@ -9,9 +9,7 @@ import { General } from '../../interfaces/discounts/general.interface';
 import { EMPTY, Observable, of, from } from 'rxjs';
 import { tap, map, switchMap, take } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class FsDiscountsService {
 
   public myCollectObjs00$!: Observable<DocumentData>;

@@ -8,9 +8,7 @@ import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
 import { Vouchers } from '../../interfaces/value-added/vouchers.interface';
 import { MainValueAdded00 } from '../../interfaces/value-added/main-value-added00.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class MainValueAddedService {
 
   public constructor(){}
@@ -100,8 +98,7 @@ export class MainValueAddedService {
 				() => test00 === true,
 				test01$,
 				of(false)
-			))
-		);
+			)));
 	 return test02$;
 	}
 }
