@@ -34,8 +34,8 @@ export class DiscountsService {
     return from(this.staffDiscounts).pipe(take(2));
   }
   public getGeneralDiscounts01(): Observable<DocumentData> {
-    return this.fsDiscountsServices.getDiscounts01('discounts', 'general-discounts').pipe(
-      switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(3))));
+    return from(this.fsDiscountsServices.getDiscounts01('discounts', 'general-discounts').pipe(
+      switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(3)))));
   }
   public getStaffDiscounts01(): Observable<DocumentData> {
     return this.fsDiscountsServices.getDiscounts01('discounts', 'staff-discounts').pipe(
