@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DocumentData } from '@angular/fire/firestore';
-
-import { Observable, of, from } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
 
 import { addIcons } from 'ionicons';
 import { homeOutline, albumsOutline, ellipsisHorizontalOutline } from 'ionicons/icons';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonText } from '@ionic/angular/standalone';
-
-import { FirestoreData00Service } from '../../services/firestore/firestore-data00.service';
-import { FsDiscountsService } from '../../services/discounts/fs-discounts.service';
 
 @Component({
   selector: 'app-tabs',
@@ -21,22 +14,8 @@ import { FsDiscountsService } from '../../services/discounts/fs-discounts.servic
 })
 export class TabsPage implements OnInit {
 
-  public constructor(
-    private firestoreDataService: FirestoreData00Service, 
-    private fsDiscountsServices: FsDiscountsService){
+  public constructor(){
 		addIcons({homeOutline,albumsOutline,ellipsisHorizontalOutline});
 	}
-  public ngOnInit(){
-    this.fetchData01();
-  }
-  public fetchData01(){
-    this.fsDiscountsServices.getDiscounts01().pipe(
-      map(data00 => data00.map((data01: DocumentData) => data01['retail']))
-    ).subscribe(console.log);
-  }
-  public fetchData00(){
-    this.firestoreDataService.getCollection00().pipe(
-      tap(data => console.log(data))
-    ).subscribe();
-  }
+  public ngOnInit(){}
 }

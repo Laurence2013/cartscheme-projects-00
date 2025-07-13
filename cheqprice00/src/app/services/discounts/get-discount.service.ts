@@ -17,9 +17,13 @@ export class GetDiscountService {
 	private discountsService = inject(DiscountsService);
 
   public constructor(){}
-	public getGenDiscounts(): Observable<MainDiscounts00[]> {
-		const getGenDiscount$: Observable<General> = this.discountsService.getGeneralDiscounts();
-		const getStaffDiscount$: Observable<Staff> = this.discountsService.getStaffDiscounts();
+	
+	public getGenDiscounts01(): Observable<MainDiscounts00[]> {
+		return EMPTY;
+	}
+	public getGenDiscounts00(): Observable<MainDiscounts00[]> {
+		const getGenDiscount$: Observable<General> = this.discountsService.getGeneralDiscounts00();
+		const getStaffDiscount$: Observable<Staff> = this.discountsService.getStaffDiscounts00();
 		const genDiscount$: Observable<MainDiscounts00> = getGenDiscount$.pipe(
 			map(discounts => ({
 				id: discounts.id,
