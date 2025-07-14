@@ -1,7 +1,7 @@
 <ion-card>
 	<div class='spinner'>
 		@if((loadingService.isLoading$ | async) === false){
-			<ion-spinner name='dots' color='secondary'></ion-spinner>
+			<ion-spinner name='dots' color='primary'></ion-spinner>
 		}
 	</div>
 	@if(!isViewAll()){
