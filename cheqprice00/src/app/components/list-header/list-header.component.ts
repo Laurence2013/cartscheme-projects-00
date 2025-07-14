@@ -8,7 +8,7 @@ import { IonLabel, IonItemDivider, IonButton, IonIcon } from '@ionic/angular/sta
   styleUrls: ['./list-header.component.scss'],
 	imports: [IonLabel, IonItemDivider, IonButton, IonIcon, RouterLink]
 })
-export class ListHeaderComponent  implements OnInit {
+export class ListHeaderComponent implements OnInit {
 
 	readonly heading = input.required<string>();
 	readonly slug = input.required<string>();

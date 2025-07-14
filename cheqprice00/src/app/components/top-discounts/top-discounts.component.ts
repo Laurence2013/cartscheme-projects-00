@@ -8,7 +8,6 @@ import {
 
 import { ViewAllCardComponent } from '../../components/view-all-card/view-all-card.component';
 import { General } from '../../interfaces/discounts/general.interface';
-import { Multibuys } from '../../interfaces/offers/multibuys.interface';
 
 @Component({
   selector: 'app-top-discounts',
@@ -19,7 +18,7 @@ import { Multibuys } from '../../interfaces/offers/multibuys.interface';
 })
 export class TopDiscountsComponent implements OnInit {
 
-	public topDiscounts = input<Multibuys>();
+	public topDiscounts = input<General>();
   public isViewAll = input<boolean>(false);
   public viewAllRoute = input<string[]>();
 

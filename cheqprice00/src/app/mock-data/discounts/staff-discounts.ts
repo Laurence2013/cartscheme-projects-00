@@ -8,7 +8,8 @@ export const staff_discounts: Staff[] = [
 		slug: 'asos',
 		discount: 'assets/top-discounts/30-percent-discount-01.jpg',
 		title: '30% discount summer sales',
-		link: 'src/app/pages/discounts/discounts.page.ts'
+		link: 'src/app/pages/discounts/discounts.page.ts',
+		date: new Date('2025-09-09')
 	},
 	{
 		id: 5,
@@ -17,6 +18,7 @@ export const staff_discounts: Staff[] = [
 		slug: 'foot_locker',
 		discount: 'assets/top-discounts/30-percent-discount-00.jpg',
 		title: '30% discount summer sales',
-		link: 'src/app/pages/discounts/discounts.page.ts'
+		link: 'src/app/pages/discounts/discounts.page.ts',
+		date: new Date('2025-09-09')
 	}
 ];

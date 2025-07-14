@@ -25,7 +25,7 @@ export class GetDiscountService {
 				is_top_5: genDiscount['is_top_5'],
 				retail: genDiscount['retail'],
 				slug: genDiscount['slug'],
-				offer: genDiscount['discount'],
+				discount: genDiscount['discount'],
 				title: genDiscount['title'],
 				link: genDiscount['link']
 			})));
@@ -35,7 +35,7 @@ export class GetDiscountService {
 				is_top_5: staffDiscounts['is_top_5'],
 				retail: staffDiscounts['retail'],
 				slug: staffDiscounts['slug'],
-				offer: staffDiscounts['discount'],
+				discount: staffDiscounts['discount'],
 				title: staffDiscounts['title'],
 				link: staffDiscounts['link']
 			})));

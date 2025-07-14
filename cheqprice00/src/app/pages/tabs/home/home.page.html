@@ -20,15 +20,15 @@
 			slug='discounts'
 			buttonName='View All'
 			buttonIcon='arrow-forward-outline'
-			buttonColour='medium'
-			></app-list-header>
+			buttonColour='medium'>
+		</app-list-header>
 
 		<app-horizontal-list
 			[items]='top_general_discounts00()'
 			[itemTemplate]='topDiscountTemplate'
 			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
-			[viewAllTemplate]='viewAllTopDiscountTemplate'
-			></app-horizontal-list>
+			[viewAllTemplate]='viewAllTopDiscountTemplate'>
+		</app-horizontal-list>
 
 		<ng-template #topDiscountTemplate let-discount>
 			<app-top-discounts [topDiscounts]='discount'></app-top-discounts>
@@ -47,15 +47,15 @@
 			slug='offers'
 			buttonName='View All'
 			buttonIcon='arrow-forward-outline'
-			buttonColour='medium'
-			></app-list-header>
+			buttonColour='medium'>
+		</app-list-header>
 
 		<app-horizontal-list
 			[items]='top_multibuys00()'
 			[itemTemplate]='topOffersTemplate'
 			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
-			[viewAllTemplate]='viewAllTopOffersTemplate'
-			></app-horizontal-list>
+			[viewAllTemplate]='viewAllTopOffersTemplate'>
+		</app-horizontal-list>
 
 		<ng-template #topOffersTemplate let-offers>
 			<app-top-offers [topOffers]='offers'></app-top-offers>
@@ -74,15 +74,15 @@
 			slug='value-added'
 			buttonName='View All'
 			buttonIcon='arrow-forward-outline'
-			buttonColour='medium'
-			></app-list-header>
+			buttonColour='medium'>
+		</app-list-header>
 
 		<app-horizontal-list
 			[items]='top_value_added00()'
 			[itemTemplate]='valueAddedTemplate'
 			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
-			[viewAllTemplate]='viewAllValueAddedTemplate'
-			></app-horizontal-list>
+			[viewAllTemplate]='viewAllValueAddedTemplate'>
+		</app-horizontal-list>
 
 		<ng-template #valueAddedTemplate let-valueAdded>
 			<app-top-value-added [topValueAdded]='valueAdded'></app-top-value-added>
@@ -90,8 +90,8 @@
 		<ng-template #viewAllValueAddedTemplate>
 			<app-top-value-added
 				[isViewAll]='true'
-				[viewAllRoute]="['/tabs/value-added']"
-				></app-top-value-added>
+				[viewAllRoute]="['/tabs/value-added']">
+			</app-top-value-added>
 		</ng-template>
 	</ion-list>
 
@@ -102,15 +102,15 @@
 			slug='payment-flex'
 			buttonName='View All'
 			buttonIcon='arrow-forward-outline'
-			buttonColour='medium'
-			></app-list-header>
+			buttonColour='medium'>
+		</app-list-header>
 
 		<app-horizontal-list
 			[items]='top_payment_flex00()'
 			[itemTemplate]='paymentFlexTemplate'
 			[config]='{slidesPerView: 1.5, spaceBetween: 10}'
-			[viewAllTemplate]='viewAllPaymentFlexTemplate'
-			></app-horizontal-list>
+			[viewAllTemplate]='viewAllPaymentFlexTemplate'>
+		</app-horizontal-list>
 
 		<ng-template #paymentFlexTemplate let-paymentFlex>
 			<app-top-payment-flex [topPaymentFlex]='paymentFlex'></app-top-payment-flex>
@@ -118,8 +118,8 @@
 		<ng-template #viewAllPaymentFlexTemplate>
 			<app-top-payment-flex
 				[isViewAll]='true'
-				[viewAllRoute]="['/tabs/payment-flex']"
-				></app-top-payment-flex>
+				[viewAllRoute]="['/tabs/payment-flex']">
+			</app-top-payment-flex>
 		</ng-template>
 	</ion-list>
 </ion-content>

@@ -6,4 +6,5 @@ export interface Staff {
 	discount?: string;
 	title: string;
 	link: string;
+  date: Date
 }
