@@ -5,16 +5,17 @@ import {
 } from '@angular/fire/firestore';
 
 import { General } from '../../interfaces/discounts/general.interface';
+import { LoadingService } from '../loading/loading.service';
 
 import { EMPTY, Observable, of, from } from 'rxjs';
-import { tap, map, switchMap, take } from 'rxjs/operators';
+import { tap, map, switchMap, take, finalize } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class FsDiscountsService {
 
   public myCollectObjs00$!: Observable<DocumentData>;
 
-  public constructor(private ngZone: NgZone, private firestore: Firestore){}
+  public constructor(private ngZone: NgZone, private firestore: Firestore, private loadingService: LoadingService){}
   public getDiscounts01(collectionName: string, documentType: string): Observable<DocumentData[]> {
     const test00$: Observable<CollectionReference<DocumentData>> = this.getDiscountParentID00().pipe(
       switchMap(val00 => of(val00[0]['id']).pipe(
@@ -33,7 +34,9 @@ export class FsDiscountsService {
           const discounts: DocumentData[] = [];
           data00.forEach(doc => discounts.push({id: doc.id, ...doc.data()}));
           return discounts;
-        }))));
+        }),
+        finalize(() => this.loadingService.show())
+      )));
     return test01$;
   }
   private getDiscountParentID00(): Observable<DocumentData[]> {

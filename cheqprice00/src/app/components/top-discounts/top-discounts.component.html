@@ -1,4 +1,9 @@
 <ion-card>
+	<div class='spinner'>
+		@if((loadingService.isLoading$ | async) === false){
+			<ion-spinner name='dots' color='secondary'></ion-spinner>
+		}
+	</div>
 	@if(!isViewAll()){
 		<ion-thumbnail>
 			<ion-badge color='dark'>
@@ -15,7 +20,8 @@
 			</ion-label>
 			<ion-button fill="clear" slot="end" [routerLink]="['/deals', topDiscounts()?.slug]">View Discount</ion-button>
 		</ion-item>
-	}@else{
+	}
+	@if((loadingService.isLoading$ | async) === true){
 		<app-view-all-card [route]='viewAllRoute()'></app-view-all-card>
 	}
 </ion-card>
