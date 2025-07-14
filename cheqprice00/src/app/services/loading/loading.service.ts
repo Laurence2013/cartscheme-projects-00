@@ -9,6 +9,6 @@ export class LoadingService {
   readonly isLoading$ = this._isLoading$.asObservable();
 
   public constructor(){}
-  public show(){this._isLoading$.next(true)}
-  public hide(){this._isLoading$.next(false)}
+  public show(){return this._isLoading$.next(true)}
+  public hide(){return this._isLoading$.next(false)}
 }
