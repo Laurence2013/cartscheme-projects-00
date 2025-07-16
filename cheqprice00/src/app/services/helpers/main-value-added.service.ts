@@ -44,7 +44,7 @@ export class MainValueAddedService {
       take(1),
       mergeMap((value: boolean) => iif(
         () => value === true,
-        functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<any>),
+        functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Test00$),
         EMPTY
       )));
     const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$) as Observable<MainValueAdded00>;

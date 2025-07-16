@@ -43,7 +43,7 @@ export class MainPaymentFlexService {
       take(1),
       mergeMap((value: boolean) => iif(
         () => value === true,
-        functionType(test01$(getBnpl_Giftcards$), getBnpl_Giftcards$ as Observable<any>),
+        functionType(test01$(getBnpl_Giftcards$), getBnpl_Giftcards$ as Test00$),
         EMPTY
       )));
     const test03$ = get_iif$(test01$(getBnpl_Giftcards$),test02$) as Observable<PaymentFlex00>;
