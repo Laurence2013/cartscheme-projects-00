@@ -52,7 +52,6 @@ export class GetOffersService {
 				image: multibuys['image']
 			})));
 		const result00$ = merge(combine00$, combine01$, combine02$).pipe(toArray());	
-		result00$.subscribe(console.log);
-		return EMPTY;
+		return result00$;
 	}
 }

@@ -25,7 +25,5 @@ export class TopDiscountsComponent implements OnInit {
   public viewAllRoute = input<string[]>();
 
   public constructor(public loadingService: LoadingService){}
-  public ngOnInit(){
-    this.loadingService.isLoading$.subscribe(console.log);
-  }
+  public ngOnInit(){}
 }
