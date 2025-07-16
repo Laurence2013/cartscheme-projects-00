@@ -4,16 +4,12 @@ import { DocumentData } from '@angular/fire/firestore';
 import { Observable, ObservableInput, of, from, EMPTY } from 'rxjs';
 import { tap, map, take, switchMap } from 'rxjs/operators';
 
-import { FirestoreData00Service } from '../../services/firestore/firestore-data00.service';
 import { FsDiscountsService } from '../../services/discounts/fs-discounts.service';
 
 @Injectable({providedIn: 'root'})
 export class DiscountsService {
 
-  public constructor(
-    private firestoreDataService: FirestoreData00Service, 
-    private fsDiscountsServices: FsDiscountsService
-  ){}
+  public constructor(private fsDiscountsServices: FsDiscountsService){}
   public getGeneralDiscounts01(): Observable<DocumentData> {
     return from(this.fsDiscountsServices.getDiscounts01('discounts', 'general-discounts').pipe(
       switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(3)))));

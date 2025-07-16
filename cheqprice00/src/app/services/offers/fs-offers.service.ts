@@ -4,14 +4,14 @@ import {
   QuerySnapshot, getDocs, DocumentData, query, where, Query
 } from '@angular/fire/firestore';
 
-import { General } from '../../interfaces/discounts/general.interface';
+import { Multibuys } from '../../interfaces/offers/multibuys.interface';
 import { LoadingService } from '../loading/loading.service';
 
 import { EMPTY, Observable, of, from } from 'rxjs';
 import { tap, map, switchMap, take, finalize } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
-export class FsDiscountsService {
+export class FsOffersService {
 
   public myCollectObjs00$!: Observable<DocumentData>;
 
@@ -19,8 +19,8 @@ export class FsDiscountsService {
     private ngZone: NgZone, 
     private firestore: Firestore, 
     private loadingService: LoadingService){}
-  public getDiscounts01(collectionName: string, documentType: string): Observable<DocumentData[]> {
-    const test00$: Observable<CollectionReference<DocumentData>> = this.getDiscountParentID00(collectionName).pipe(
+  public getOffers(collectionName: string, documentType: string): Observable<DocumentData[]> {
+    const test00$: Observable<CollectionReference<DocumentData>> = this.getOffersParentID00(collectionName).pipe(
       switchMap(val00 => of(val00[0]['id']).pipe(
         map((gen_discount_parent_id: string) => {
           const myCollectObjs00$: CollectionReference<DocumentData> = collection(
@@ -42,7 +42,7 @@ export class FsDiscountsService {
       )));
     return test01$;
   }
-  private getDiscountParentID00(collectionName: string): Observable<DocumentData[]> {
+  private getOffersParentID00(collectionName: string): Observable<DocumentData[]> {
     const myCollectObjs00: CollectionReference<any> = collection(this.firestore, collectionName);
     return from(getDocs(myCollectObjs00)).pipe(
       map((data00: QuerySnapshot<DocumentData>) => {
