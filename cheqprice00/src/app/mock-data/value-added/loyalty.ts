@@ -2,7 +2,7 @@ import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
 
 export const loyalty: Loyalty[] = [
   {
-    id: 1,
+    id: 3,
     is_Type: 'Loyalty',
     is_top_5: 'Yes',
     retail: 'Sports Direct',
@@ -10,7 +10,7 @@ export const loyalty: Loyalty[] = [
 		image: 'assets/top-discounts/30-percent-discount-01.jpg',
 		link: 'src/app/pages/offers/discounts.page.ts',
     type01: [Type.Point_based, Type.Tiered, Type.Subscription, Type.Value_based, Type.Referral],
-		describe00: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe00: '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
 		describe01: '2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
 		describe02: '3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
 		describe03: '4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
@@ -18,7 +18,7 @@ export const loyalty: Loyalty[] = [
     date: new Date('2025-09-09')
   },
   {
-    id: 2,
+    id: 4,
     is_Type: 'Loyalty',
     is_top_5: 'Yes',
     retail: 'Asos',
@@ -26,7 +26,7 @@ export const loyalty: Loyalty[] = [
 		image: 'assets/top-discounts/20-percent-discount-00.jpg',
 		link: 'src/app/pages/offers/discounts.page.ts',
     type01: [Type.Point_based, Type.Tiered, Type.Subscription, Type.Value_based, Type.Referral],
-		describe00: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
+		describe00: '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
 		describe01: '2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
 		describe02: '3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
 		describe03: '4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et...',
