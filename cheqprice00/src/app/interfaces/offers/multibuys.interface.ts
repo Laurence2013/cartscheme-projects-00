@@ -6,4 +6,5 @@ export interface Multibuys {
 	title: string;
 	offer?: string;
 	link?: string;
+	date: Date;
 }

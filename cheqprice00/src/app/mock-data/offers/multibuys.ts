@@ -8,7 +8,8 @@ export const multibuys: Multibuys[] = [
 		slug: 'sports_direct',
 		offer: 'assets/top-discounts/20-percent-discount-00.jpg',
 		title: 'Buy One get One Free!',
-		link: 'src/app/pages/offers/discounts.page.ts'
+		link: 'src/app/pages/offers/discounts.page.ts',
+		date: new Date('2025-09-09')
 	},
 	{
 		id: 2,
@@ -17,6 +18,7 @@ export const multibuys: Multibuys[] = [
 		slug: 'jd_sports',
 		offer: 'assets/top-discounts/20-percent-discount.jpg',
 		title: 'Buy Two get any Addidas T-Shirt half price!',
-		link: 'src/app/pages/offers/discounts.page.ts'
+		link: 'src/app/pages/offers/discounts.page.ts',
+		date: new Date('2025-09-09')
 	}
 ]
