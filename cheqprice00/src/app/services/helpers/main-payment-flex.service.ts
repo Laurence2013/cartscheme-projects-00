@@ -7,12 +7,14 @@ import { Bnpl } from '../../interfaces/payment-flex/bnpl.interface';
 import { Giftcards } from '../../interfaces/payment-flex/giftcards.interface';
 import { PaymentFlex00 } from '../../interfaces/payment-flex/payment-flex00.interface';
 
+import { FsMainQuery01Service } from './fs-main-query01.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class MainPaymentFlexService {
 
-  public constructor(){}
+  public constructor(private fsMainQuery01Service: FsMainQuery01Service){}
   public mainPaymentFlex(
     getBnpl$: Observable<Bnpl>,
     getGiftcards$: Observable<Giftcards>,
@@ -20,11 +22,15 @@ export class MainPaymentFlexService {
   ): Observable<PaymentFlex00> {
     type Test00$ = Observable<Bnpl | Giftcards>;
 
-    if(valueType === 'bnpl'){return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.get_IIF)};
-    if(valueType === 'giftcards'){return this.getMainPaymentFlex(getGiftcards$, valueType, this.getGiftcards, this.get_IIF)};
+    if(valueType === 'bnpl'){
+      return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.fsMainQuery01Service.get_IIF);
+    };
+    if(valueType === 'giftcards'){
+      return this.getMainPaymentFlex(getGiftcards$, valueType, this.getGiftcards, this.fsMainQuery01Service.get_IIF);
+    };
     return EMPTY;
   }
-  public getMainPaymentFlex(
+  private getMainPaymentFlex(
     getBnpl_Giftcards$: Observable<Bnpl | Giftcards>,
     valueType: string,
 		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<PaymentFlex00>,
@@ -40,7 +46,7 @@ export class MainPaymentFlexService {
         functionType(test01$(getBnpl_Giftcards$), getBnpl_Giftcards$ as Observable<any>),
         EMPTY
       )));
-    const test03$ = get_iif$(test01$(getBnpl_Giftcards$),test02$);
+    const test03$ = get_iif$(test01$(getBnpl_Giftcards$),test02$) as Observable<PaymentFlex00>;
     return test03$;
   }
   public getBnpl(test00$: Observable<boolean>, getPaymentFlex$: Observable<Bnpl>): Observable<PaymentFlex00> {
@@ -78,14 +84,4 @@ export class MainPaymentFlexService {
       })));
     return combine00$;
   }
-	private get_IIF(test00$: Observable<boolean>, test01$: Observable<any>): Observable<boolean> {
-		const test02$ = test00$.pipe(
-			take(1),
-			mergeMap((test00: boolean) => iif(
-				() => test00 === true,
-				test01$,
-				of(false)
-			)));
-	 return test02$;
-	}
 }

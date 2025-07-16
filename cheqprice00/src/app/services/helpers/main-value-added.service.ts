@@ -8,10 +8,12 @@ import { Loyalty, Type } from '../../interfaces/value-added/loyalty.interface';
 import { Vouchers } from '../../interfaces/value-added/vouchers.interface';
 import { MainValueAdded00 } from '../../interfaces/value-added/main-value-added00.interface';
 
+import { FsMainQuery01Service } from './fs-main-query01.service';
+
 @Injectable({providedIn: 'root'})
 export class MainValueAddedService {
 
-  public constructor(){}
+  public constructor(private fsMainQuery01Service: FsMainQuery01Service){}
 	public mainValueAdded01(
 		getCashbacks$: Observable<Cashbacks>,
 		getLoyalty$: Observable<Loyalty>,
@@ -19,30 +21,35 @@ export class MainValueAddedService {
 		valueType: string): Observable<MainValueAdded00> {
 			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
 
-			if(valueType === 'Cashbacks'){return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks, this.get_IIF)};
-			if(valueType === 'Loyalty'){return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty, this.get_IIF)};
-			if(valueType === 'Vouchers'){return this.getValueAdded(getVouchers$, valueType, this.getVouchers, this.get_IIF)};
+			if(valueType === 'Cashbacks'){
+				return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks, this.fsMainQuery01Service.get_IIF);
+			};
+			if(valueType === 'Loyalty'){
+				return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty, this.fsMainQuery01Service.get_IIF);
+			};
+			if(valueType === 'Vouchers'){
+				return this.getValueAdded(getVouchers$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF);
+			};
 			return EMPTY;
 	}
 	private getValueAdded(
 		getCashback_Loyalty_Voucher$: Observable<Cashbacks | Loyalty | Vouchers>, 
 		valueType: string,
 		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>,
-		get_iif$: (obs02: Observable<boolean>, obs03: Observable<any>) => Observable<any>): 
-			Observable<MainValueAdded00> {
-				type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
+		get_iif$: (obs02: Observable<boolean>, obs03: Observable<any>) => Observable<any>): Observable<MainValueAdded00> {
+    type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
 
-				const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === valueType));
-				const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
-					take(1),
-					mergeMap((value: boolean) => iif(
-						() => value === true,
-						functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<any>),
-						EMPTY
-					)));
-					const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$);
-				return test03$;
-	}
+    const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === valueType));
+    const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
+      take(1),
+      mergeMap((value: boolean) => iif(
+        () => value === true,
+        functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<any>),
+        EMPTY
+      )));
+    const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$) as Observable<MainValueAdded00>;
+    return test03$;
+		}
 	private getLoyalty(
 		test01$: Observable<boolean>, 
 		getValueAdded$: Observable<Loyalty>): Observable<MainValueAdded00> {
@@ -90,15 +97,5 @@ export class MainValueAddedService {
 					date: value_added.date
 				})));
 			return combine02$;
-	}
-	private get_IIF(test00$: Observable<boolean>, test01$: Observable<any>): Observable<boolean> {
-		const test02$ = test00$.pipe(
-			take(1),
-			mergeMap((test00: boolean) => iif(
-				() => test00 === true,
-				test01$,
-				of(false)
-			)));
-	 return test02$;
 	}
 }
