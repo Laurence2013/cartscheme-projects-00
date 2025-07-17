@@ -32,14 +32,5 @@ bootstrapApplication(AppComponent, {
       };
       return firestore;
     }),
-    //Auth setup
-    provideAuth(() => {
-      const auth = getAuth();
-      if(environment.useEmulators){
-        connectAuthEmulator(auth, 'http://localhost:9090');
-        console.log('Auth connected to emulator at http://localhost:9099');
-      }
-      return auth;
-    })
   ],
 }).catch(err => console.log(err));

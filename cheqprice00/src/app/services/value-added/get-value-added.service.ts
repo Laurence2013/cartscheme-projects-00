@@ -22,17 +22,26 @@ export class GetValueAddedService {
 	private mainValueAddedService = inject(MainValueAddedService);
 
   public constructor(){}
-	public getValueAdded(): Observable<MainValueAdded00[]> {
+	public getValueAdded00(): Observable<MainValueAdded00[]> {
 		const getCashbacks$: Observable<DocumentData> = this.valueAddedService.getCashbacks();
 		//const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
 		//const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
 
-		const test00$ = this.mainValueAddedService.mainValueAdded02(getCashbacks$, 'Cashbacks');
-		//const test00$ = this.mainValueAddedService.mainValueAdded01(getCashbacks$, EMPTY, EMPTY, 'Cashbacks');
+		//const test00$ = this.mainValueAddedService.mainValueAdded02(getCashbacks$, 'Cashbacks');
 		//const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, EMPTY, 'Loyalty');
 		//const test02$ = this.mainValueAddedService.mainValueAdded01(EMPTY, EMPTY, getVouchers$, 'Vouchers');
-		//const result00$ = merge(test00$, test01$, test02$).pipe(toArray());	
-		const result00$ = merge(test00$).pipe(toArray());	
+		//const result00$ = merge(test00$).pipe(toArray());	
+		return EMPTY;
+	}
+	public getValueAdded(): Observable<MainValueAdded00[]> {
+		const getCashbacks$: Observable<Cashbacks> = this.valueAddedService.getCashbacks000();
+		const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty000();
+		const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers000();
+
+		const test00$ = this.mainValueAddedService.mainValueAdded01(getCashbacks$, EMPTY, EMPTY, 'Cashbacks');
+		const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, EMPTY, 'Loyalty');
+		const test02$ = this.mainValueAddedService.mainValueAdded01(EMPTY, EMPTY, getVouchers$, 'Vouchers');
+		const result00$ = merge(test00$, test01$, test02$).pipe(toArray());	
 		return result00$;
 	}
 }

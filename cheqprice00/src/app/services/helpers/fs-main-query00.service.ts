@@ -21,7 +21,6 @@ export class FsMainQuery00Service {
     private loadingService: LoadingService){}
   public getFsCollections00(collectionName: string, documentType: string): Observable<DocumentData[]> {
     const test00$: Observable<CollectionReference<DocumentData>> = this.getCollectionParentId00(collectionName).pipe(
-      tap(data => console.log(data)),
       switchMap(val00 => of(val00[0]['id']).pipe(
         map((gen_discount_parent_id: string) => {
           const myCollectObjs00$: CollectionReference<DocumentData> = collection(

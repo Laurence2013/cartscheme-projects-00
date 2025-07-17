@@ -13,7 +13,7 @@ export class FsValueAddedService {
     private firestore: Firestore, 
     private fsMainQueryService: FsMainQuery00Service
   ){}
-  public getValueAdded(collectionName: string, documentType: string): Observable<DocumentData[]> {
+  public getFsValueAdded(collectionName: string, documentType: string): Observable<DocumentData[]> {
     return this.fsMainQueryService.getFsCollections00(collectionName, documentType);
   }
 }
