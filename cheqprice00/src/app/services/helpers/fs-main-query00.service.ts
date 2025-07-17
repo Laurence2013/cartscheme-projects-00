@@ -13,15 +13,13 @@ import { tap, map, switchMap, take, finalize } from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class FsMainQuery00Service {
 
-  public myCollectObjs00$!: Observable<DocumentData>;
-
   public constructor(
     private ngZone: NgZone, 
     private firestore: Firestore, 
     private loadingService: LoadingService){}
   public getFsCollections00(collectionName: string, documentType: string): Observable<DocumentData[]> {
     const test00$: Observable<CollectionReference<DocumentData>> = this.getCollectionParentId00(collectionName).pipe(
-      switchMap(val00 => of(val00[0]['id']).pipe(
+      switchMap((val00: DocumentData) => of(val00[0]['id']).pipe(
         map((gen_discount_parent_id: string) => {
           const myCollectObjs00$: CollectionReference<DocumentData> = collection(
             this.firestore, 
@@ -43,13 +41,12 @@ export class FsMainQuery00Service {
     return test01$;
   }
   private getCollectionParentId00(collectionName: string): Observable<DocumentData[]> {
-    const myCollectObjs00: CollectionReference<any> = collection(this.firestore, collectionName);
+    const myCollectObjs00: CollectionReference<DocumentData> = collection(this.firestore, collectionName);
     return from(getDocs(myCollectObjs00)).pipe(
       map((data00: QuerySnapshot<DocumentData>) => {
         const discounts: DocumentData[] = [];
         data00.forEach(doc => discounts.push({id: doc.id}));
         return discounts;
-      })
-    );
+      }));
   }
 }
