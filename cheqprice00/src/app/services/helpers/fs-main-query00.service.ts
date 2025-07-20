@@ -35,18 +35,22 @@ export class FsMainQuery00Service {
     collectionName: string, 
     parent_id: string, 
     documentType: string): Observable<DocumentData[]> {
-      const myCollectObjs00$: CollectionReference<DocumentData> = collection(
-        this.firestore,
-        collectionName,
-        parent_id,
-        documentType
-      );
-    return from(getDocs(myCollectObjs00$)).pipe(
-      map((querySnapShot: QuerySnapshot<DocumentData>) => querySnapShot.docs.map(doc => ({id: doc.id, ...doc.data()}))));
+      return this.ngZone.run(() => {
+        const myCollectObjs00$: CollectionReference<DocumentData> = collection(
+          this.firestore,
+          collectionName,
+          parent_id,
+          documentType
+        );
+        return from(getDocs(myCollectObjs00$)).pipe(
+          map((querySnapShot: QuerySnapshot<DocumentData>) => querySnapShot.docs.map(doc => (
+            {id: doc.id, ...doc.data()}
+      ))))});
   }
   private getCollectionParentId00(collectionName: string): Observable<string[]> {
-    const myCollectObjs00: CollectionReference<DocumentData> = collection(this.firestore, collectionName);
-    return from(getDocs(myCollectObjs00)).pipe(
-      map((data00: QuerySnapshot<DocumentData>) => data00.docs.map(doc => doc.id)));
+    return this.ngZone.run(() => { 
+      const myCollectObjs00: CollectionReference<DocumentData> = collection(this.firestore, collectionName);
+      return from(getDocs(myCollectObjs00)).pipe(
+        map((data00: QuerySnapshot<DocumentData>) => data00.docs.map(doc => doc.id)))});
   }
 }
