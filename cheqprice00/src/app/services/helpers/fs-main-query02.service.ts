@@ -14,12 +14,14 @@ export class FsMainQuery02Service {
   public constructor(private ngZone: NgZone, private firestore: Firestore){}
   public getValueAdded00(collectionName: string, documentType: string): Observable<DocumentData[]> {
     if(documentType === 'cashbacks') {
-      return this.getCashbacks00(collectionName, documentType, this.getColParentID00.bind(this));
-    }
-    if(collectionName === 'loyalty'){}
+      return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
+    if(documentType === 'loyalty'){
+      return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
+    if(documentType === 'vouchers'){
+      return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
     return EMPTY;
   }
-  private getCashbacks00(
+  private getValueAdded01(
     collectionName: string, 
     documentType: string,
     getColParentID: (collectionName: string) => Observable<string[]>): Observable<DocumentData[]> {

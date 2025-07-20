@@ -24,8 +24,8 @@ export class GetValueAddedService {
   public constructor(){}
 	public getValueAdded00(): Observable<MainValueAdded00[]> {
 		const getCashbacks$: Observable<DocumentData> = this.valueAddedService.getCashbacks();
-		//const getLoyalty$: Observable<Loyalty> = this.valueAddedService.getLoyalty();
-		//const getVouchers$: Observable<Vouchers> = this.valueAddedService.getVouchers();
+		const getLoyalty$: Observable<DocumentData> = this.valueAddedService.getLoyalty();
+		const getVouchers$: Observable<DocumentData> = this.valueAddedService.getVouchers();
 
 		//const test00$ = this.mainValueAddedService.mainValueAdded02(getCashbacks$, 'Cashbacks');
 		//const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, EMPTY, 'Loyalty');

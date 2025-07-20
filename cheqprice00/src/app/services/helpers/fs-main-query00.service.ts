@@ -25,10 +25,8 @@ export class FsMainQuery00Service {
           return this.getNestedCollections00(collectionName, parentId01, documentType);
         }else{
           return of([]);
-        }
-      }),
-      finalize(() => this.loadingService.show())
-    )
+        }}),
+      finalize(() => this.loadingService.show()))
     return test00$;
   }
   private getNestedCollections00(
