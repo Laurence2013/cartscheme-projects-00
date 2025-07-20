@@ -8,7 +8,7 @@ import {
 import { General } from '../../interfaces/discounts/general.interface';
 import { LoadingService } from '../loading/loading.service';
 
-import { EMPTY, Observable, of, from, firstValueFrom } from 'rxjs';
+import { EMPTY, Observable, of, from } from 'rxjs';
 import { tap, map, switchMap, take, finalize } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})

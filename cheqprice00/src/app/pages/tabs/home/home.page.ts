@@ -54,6 +54,6 @@ export class HomePage implements OnInit {
   public ngOnInit(){}
 	public getGenDiscount(): Observable<MainDiscounts00[]> {return this.getDiscountService.getGenDiscounts01()}
 	public getOffers(): Observable<MainOffers01[]> {return this.getOffersService.getOffers()}
-	public getValueAdded(): Observable<MainValueAdded00[]> {return this.getValueAddedService.getValueAdded()}
+	public getValueAdded(): Observable<MainValueAdded00[]> {return this.getValueAddedService.getValueAdded00()}
 	public getPaymentFlex(): Observable<PaymentFlex01[]> {return this.getPaymentFlexService.getPaymentFlex()}
 }

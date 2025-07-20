@@ -31,6 +31,7 @@ export class GetValueAddedService {
 		//const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, EMPTY, 'Loyalty');
 		//const test02$ = this.mainValueAddedService.mainValueAdded01(EMPTY, EMPTY, getVouchers$, 'Vouchers');
 		//const result00$ = merge(test00$).pipe(toArray());	
+		//result00$.subscribe(console.log);
 		return EMPTY;
 	}
 	public getValueAdded(): Observable<MainValueAdded00[]> {

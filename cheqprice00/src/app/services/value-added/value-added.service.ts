@@ -31,12 +31,12 @@ export class ValueAddedService {
   }
   public getLoyalty(): Observable<DocumentData> {
     const test00$ = from(this.fsValueAddedService.getFsValueAdded('value-added', 'loyalty').pipe(
-      switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(2)))))
+      switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(2)))));
     return test00$;
   }
   public getVouchers(): Observable<DocumentData> {
     const test00$ = from(this.fsValueAddedService.getFsValueAdded('value-added', 'vouchers').pipe(
-      switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(1)))))
+      switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(1)))));
     return test00$;
   }
   public getCashbacks000(){return from(this.getCashbacks00).pipe(take(2))}
