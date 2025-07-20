@@ -1,52 +1,52 @@
 import { Injectable, NgZone } from '@angular/core';
 import { 
   Firestore, CollectionReference, collection, collectionData,
-  QuerySnapshot, getDocs, DocumentData, query, where, Query
+  QuerySnapshot, doc, getDocs, DocumentData, DocumentReference, 
+  query, where, Query
 } from '@angular/fire/firestore';
 
 import { General } from '../../interfaces/discounts/general.interface';
 import { LoadingService } from '../loading/loading.service';
 
-import { EMPTY, Observable, of, from } from 'rxjs';
+import { EMPTY, Observable, of, from, firstValueFrom } from 'rxjs';
 import { tap, map, switchMap, take, finalize } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class FsMainQuery00Service {
-
   public constructor(
     private ngZone: NgZone, 
     private firestore: Firestore, 
     private loadingService: LoadingService){}
   public getFsCollections00(collectionName: string, documentType: string): Observable<DocumentData[]> {
-    const test00$: Observable<CollectionReference<DocumentData>> = this.getCollectionParentId00(collectionName).pipe(
-      switchMap((val00: DocumentData) => of(val00[0]['id']).pipe(
-        map((gen_discount_parent_id: string) => {
-          const myCollectObjs00$: CollectionReference<DocumentData> = collection(
-            this.firestore, 
-            collectionName,
-            gen_discount_parent_id,
-            documentType
-          );
-          return myCollectObjs00$;
-        }))));
-    const test01$: Observable<DocumentData[]> = test00$.pipe(
-      switchMap((data00: CollectionReference<DocumentData>) => from(getDocs(data00)).pipe(
-        map((data00: QuerySnapshot<DocumentData>) => {
-          const discounts: DocumentData[] = [];
-          data00.forEach(doc => discounts.push({id: doc.id, ...doc.data()}));
-          return discounts;
-        }),
-        finalize(() => this.loadingService.show())
-      )));
-    return test01$;
+    const test00$ = this.getCollectionParentId00(collectionName).pipe(
+      switchMap((parentId00: string[]) => {
+        if(parentId00.length > 0){
+          const parentId01 = parentId00[0];
+          return this.getNestedCollections00(collectionName, parentId01, documentType);
+        }else{
+          return of([]);
+        }
+      }),
+      finalize(() => this.loadingService.show())
+    )
+    return test00$;
   }
-  private getCollectionParentId00(collectionName: string): Observable<DocumentData[]> {
+  private getNestedCollections00(
+    collectionName: string, 
+    parent_id: string, 
+    documentType: string): Observable<DocumentData[]> {
+      const myCollectObjs00$: CollectionReference<DocumentData> = collection(
+        this.firestore,
+        collectionName,
+        parent_id,
+        documentType
+      );
+    return from(getDocs(myCollectObjs00$)).pipe(
+      map((querySnapShot: QuerySnapshot<DocumentData>) => querySnapShot.docs.map(doc => ({id: doc.id, ...doc.data()}))));
+  }
+  private getCollectionParentId00(collectionName: string): Observable<string[]> {
     const myCollectObjs00: CollectionReference<DocumentData> = collection(this.firestore, collectionName);
     return from(getDocs(myCollectObjs00)).pipe(
-      map((data00: QuerySnapshot<DocumentData>) => {
-        const discounts: DocumentData[] = [];
-        data00.forEach(doc => discounts.push({id: doc.id}));
-        return discounts;
-      }));
+      map((data00: QuerySnapshot<DocumentData>) => data00.docs.map(doc => doc.id)));
   }
 }
