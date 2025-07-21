@@ -25,4 +25,5 @@ export class FsMainQuery01Service {
 			)));
 	 return test02$;
 	}
+	public getNestedCollection(){}
 }

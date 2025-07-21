@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { DocumentData } from '@angular/fire/firestore';
 
 import { Observable, of, merge, EMPTY } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
@@ -18,8 +19,24 @@ export class GetPaymentFlexService {
 
   public constructor(){}
   public getPaymentFlex(): Observable<PaymentFlex01[]> {
-		const getCashbacks$: Observable<Bnpl> = this.paymentFlexService.getBnpl();
-    const getGiftCards$: Observable<Giftcards> = this.paymentFlexService.getGiftcards();
+		const getCashbacks$: Observable<DocumentData> = this.paymentFlexService.getBnpl();
+    //const getGiftCards$: Observable<DocumentData> = this.paymentFlexService.getGiftcards01();
+
+		/*const test00$: Observable<PaymentFlex00> = this.mainPaymentFlexService.mainPaymentFlex(getCashbacks$, EMPTY, 'bnpl');
+		const test01$: Observable<PaymentFlex00> = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'giftcards');
+    const result00$: Observable<PaymentFlex01[]> = merge(
+      test00$.pipe(map(val00 => ({type: val00.is_Type, info: val00}))), 
+      test01$.pipe(map(val00 => ({type: val00.is_Type, info: val00})))
+    ).pipe(
+      toArray(),
+      map(val00 => val00.map((val: any) => ({type: val.type, info: val.info})))
+    );
+    return result00$;*/
+   return EMPTY;
+  }
+  public getPaymentFlex00(): Observable<PaymentFlex01[]> {
+		const getCashbacks$: Observable<Bnpl> = this.paymentFlexService.getBnpl01();
+    const getGiftCards$: Observable<Giftcards> = this.paymentFlexService.getGiftcards01();
 
 		const test00$: Observable<PaymentFlex00> = this.mainPaymentFlexService.mainPaymentFlex(getCashbacks$, EMPTY, 'bnpl');
 		const test01$: Observable<PaymentFlex00> = this.mainPaymentFlexService.mainPaymentFlex(EMPTY, getGiftCards$, 'giftcards');

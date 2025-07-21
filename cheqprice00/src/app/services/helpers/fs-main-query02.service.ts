@@ -25,6 +25,8 @@ export class FsMainQuery02Service {
       return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
     if(documentType === 'vouchers'){
       return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
+    if(documentType === 'bnpl'){
+      return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
     return EMPTY;
   }
   private getValueAdded01(

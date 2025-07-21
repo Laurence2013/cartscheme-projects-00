@@ -10,18 +10,10 @@ import { Vouchers } from '../../interfaces/value-added/vouchers.interface';
 
 import { FsValueAddedService } from './fs-value-added.service';
 
-import { cashbacks } from '../../mock-data/value-added/cashbacks';
-import { loyalty } from '../../mock-data/value-added/loyalty';
-import { vouchers } from '../../mock-data/value-added/vouchers';
-
 @Injectable({
   providedIn: 'root'
 })
 export class ValueAddedService {
-
-  private getCashbacks00: Cashbacks[] = cashbacks;
-  private getLoyalty00: Loyalty[] = loyalty;
-  private getVouchers00: Vouchers[] = vouchers;
 
   public constructor(private fsValueAddedService: FsValueAddedService){}
   public getCashbacks(): Observable<DocumentData> {
@@ -36,7 +28,4 @@ export class ValueAddedService {
     return from(this.fsValueAddedService.getFsValueAdded('value-added', 'vouchers').pipe(
       switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(1)))));
   }
-  public getCashbacks000(){return from(this.getCashbacks00).pipe(take(2))}
-  public getLoyalty000(){return from(this.getLoyalty00).pipe(take(2))}
-  public getVouchers000(){return from(this.getVouchers00).pipe(take(1))}
 }
