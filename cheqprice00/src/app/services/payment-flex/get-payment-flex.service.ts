@@ -10,9 +10,7 @@ import { PaymentFlex00, PaymentFlex01 } from '../../interfaces/payment-flex/paym
 import { PaymentFlexService } from './payment-flex.service';
 import { MainPaymentFlexService } from '../../services/helpers/main-payment-flex.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class GetPaymentFlexService {
 
   public paymentFlexService = inject(PaymentFlexService);
