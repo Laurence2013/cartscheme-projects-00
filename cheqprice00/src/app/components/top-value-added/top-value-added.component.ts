@@ -32,7 +32,7 @@ export class TopValueAddedComponent implements OnInit {
       let truncated = text.map(text00 => text00.substring(0, maxLength));
       const lastSpaceIndex = truncated.lastIndexOf(' ');
       if (lastSpaceIndex !== -1) truncated = truncated.map(text => text.substring(0, lastSpaceIndex));
-      return [truncated + '...']; // Using '..' as you requested
+      return [truncated + '...'];
     }
     return text;
   }
@@ -44,7 +44,7 @@ export class TopValueAddedComponent implements OnInit {
       if (lastSpaceIndex !== -1) {
         truncated = truncated.substring(0, lastSpaceIndex);
       }
-      return truncated + '...'; // Using '..' as you requested
+      return truncated + '...';
     }
     return text;
   }

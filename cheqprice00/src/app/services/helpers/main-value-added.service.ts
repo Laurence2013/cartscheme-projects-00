@@ -26,19 +26,6 @@ export class MainValueAddedService {
 				return this.getValueAdded(getValueAdded$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF)};
 			return EMPTY;
 	}
-	public mainValueAdded01(
-		getCashbacks$: Observable<Cashbacks>,
-		getLoyalty$: Observable<Loyalty>,
-		getVouchers$: Observable<Vouchers>,
-		valueType: string): Observable<MainValueAdded00> {
-			if(valueType === 'Cashbacks'){
-				return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks, this.fsMainQuery01Service.get_IIF)};
-			if(valueType === 'Loyalty'){
-				return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty, this.fsMainQuery01Service.get_IIF)};
-			if(valueType === 'Vouchers'){
-				return this.getValueAdded(getVouchers$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF)};
-			return EMPTY;
-	}
 	private getValueAdded(
 		getCashback_Loyalty_Voucher$: Observable<DocumentData>, 
 		valueType: string,
@@ -50,24 +37,6 @@ export class MainValueAddedService {
       mergeMap((value: boolean) => iif(
         () => value === true,
         functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<DocumentData>),
-        EMPTY
-      )));
-    const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$) as Observable<MainValueAdded00>;
-    return test03$;
-	}
-	private getValueAdded00(
-		getCashback_Loyalty_Voucher$: Observable<Cashbacks | Loyalty | Vouchers>, 
-		valueType: string,
-		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>,
-		get_iif$: (obs02: Observable<boolean>, obs03: Observable<any>) => Observable<any>): Observable<MainValueAdded00> {
-    type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
-
-    const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01.is_Type === valueType));
-    const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
-      take(1),
-      mergeMap((value: boolean) => iif(
-        () => value === true,
-        functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Test00$),
         EMPTY
       )));
     const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$) as Observable<MainValueAdded00>;
