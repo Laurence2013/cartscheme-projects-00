@@ -25,19 +25,16 @@ export class ValueAddedService {
 
   public constructor(private fsValueAddedService: FsValueAddedService){}
   public getCashbacks(): Observable<DocumentData> {
-    const test00$ = from(this.fsValueAddedService.getFsValueAdded('value-added', 'cashbacks').pipe(
+    return from(this.fsValueAddedService.getFsValueAdded('value-added', 'cashbacks').pipe(
       switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(2)))));
-    return test00$;
   }
   public getLoyalty(): Observable<DocumentData> {
-    const test00$ = from(this.fsValueAddedService.getFsValueAdded('value-added', 'loyalty').pipe(
+    return from(this.fsValueAddedService.getFsValueAdded('value-added', 'loyalty').pipe(
       switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(2)))));
-    return test00$;
   }
   public getVouchers(): Observable<DocumentData> {
-    const test00$ = from(this.fsValueAddedService.getFsValueAdded('value-added', 'vouchers').pipe(
+    return from(this.fsValueAddedService.getFsValueAdded('value-added', 'vouchers').pipe(
       switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(1)))));
-    return test00$;
   }
   public getCashbacks000(){return from(this.getCashbacks00).pipe(take(2))}
   public getLoyalty000(){return from(this.getLoyalty00).pipe(take(2))}

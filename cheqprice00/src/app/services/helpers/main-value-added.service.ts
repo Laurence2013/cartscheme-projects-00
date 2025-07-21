@@ -18,17 +18,12 @@ export class MainValueAddedService {
 	public mainValueAdded02(
 		getValueAdded$: Observable<DocumentData>,
 		valueType: string): Observable<MainValueAdded00> {
-			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
-
 			if(valueType === 'Cashbacks'){
-				return this.getValueAdded(getValueAdded$, valueType, this.getCashbacks, this.fsMainQuery01Service.get_IIF);
-			};
+				return this.getValueAdded(getValueAdded$, valueType, this.getCashbacks, this.fsMainQuery01Service.get_IIF)};
 			if(valueType === 'Loyalty'){
-				return this.getValueAdded(getValueAdded$, valueType, this.getLoyalty, this.fsMainQuery01Service.get_IIF);
-			};
+				return this.getValueAdded(getValueAdded$, valueType, this.getLoyalty, this.fsMainQuery01Service.get_IIF)};
 			if(valueType === 'Vouchers'){
-				return this.getValueAdded(getValueAdded$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF);
-			};
+				return this.getValueAdded(getValueAdded$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF)};
 			return EMPTY;
 	}
 	public mainValueAdded01(
@@ -36,17 +31,12 @@ export class MainValueAddedService {
 		getLoyalty$: Observable<Loyalty>,
 		getVouchers$: Observable<Vouchers>,
 		valueType: string): Observable<MainValueAdded00> {
-			type Test00$ = Observable<Cashbacks | Loyalty | Vouchers>;
-
 			if(valueType === 'Cashbacks'){
-				return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks, this.fsMainQuery01Service.get_IIF);
-			};
+				return this.getValueAdded(getCashbacks$, valueType, this.getCashbacks, this.fsMainQuery01Service.get_IIF)};
 			if(valueType === 'Loyalty'){
-				return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty, this.fsMainQuery01Service.get_IIF);
-			};
+				return this.getValueAdded(getLoyalty$, valueType, this.getLoyalty, this.fsMainQuery01Service.get_IIF)};
 			if(valueType === 'Vouchers'){
-				return this.getValueAdded(getVouchers$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF);
-			};
+				return this.getValueAdded(getVouchers$, valueType, this.getVouchers, this.fsMainQuery01Service.get_IIF)};
 			return EMPTY;
 	}
 	private getValueAdded(
@@ -54,14 +44,12 @@ export class MainValueAddedService {
 		valueType: string,
 		functionType: (obs00: Observable<boolean>, obs01: Observable<any>) => Observable<MainValueAdded00>,
 		get_iif$: (obs02: Observable<boolean>, obs03: Observable<any>) => Observable<any>): Observable<MainValueAdded00> {
-    type Test00$ = Observable<DocumentData>;
-
-    const test01$ = (test00$: Test00$) => test00$.pipe(map(test01 => test01['is_Type'] === valueType));
+    const test01$ = (test00$: Observable<DocumentData>) => test00$.pipe(map(test01 => test01['is_Type'] === valueType));
     const test02$ = test01$(getCashback_Loyalty_Voucher$).pipe(
       take(1),
       mergeMap((value: boolean) => iif(
         () => value === true,
-        functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Test00$),
+        functionType(test01$(getCashback_Loyalty_Voucher$), getCashback_Loyalty_Voucher$ as Observable<DocumentData>),
         EMPTY
       )));
     const test03$ = get_iif$(test01$(getCashback_Loyalty_Voucher$),test02$) as Observable<MainValueAdded00>;

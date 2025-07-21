@@ -14,10 +14,6 @@ export class FsValueAddedService {
     private fsMainQueryService: FsMainQuery02Service
   ){}
   public getFsValueAdded(collectionName: string, documentType: string): Observable<DocumentData[]> {
-    this.fsMainQueryService.getValueAdded00(collectionName, documentType).subscribe({
-      next: data => console.log('Direct test data:', data),
-      error: err => console.error('Direct test error:', err)
-    })
-    return EMPTY;
+    return this.fsMainQueryService.getValueAdded00(collectionName, documentType);
   }
 }

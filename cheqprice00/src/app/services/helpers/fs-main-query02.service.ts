@@ -1,7 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 
 import { Observable, EMPTY, from, of } from 'rxjs';
-import { tap, map, take, switchMap } from 'rxjs/operators';
+import { tap, map, take, switchMap, finalize } from 'rxjs/operators';
+
+import { LoadingService } from '../loading/loading.service';
 
 import { 
   Firestore, CollectionReference, collection, collectionData,
@@ -11,7 +13,11 @@ import {
 @Injectable({providedIn: 'root'})
 export class FsMainQuery02Service {
 
-  public constructor(private ngZone: NgZone, private firestore: Firestore){}
+  public constructor(
+    private ngZone: NgZone, 
+    private firestore: Firestore,
+    private loadingService: LoadingService
+  ){}
   public getValueAdded00(collectionName: string, documentType: string): Observable<DocumentData[]> {
     if(documentType === 'cashbacks') {
       return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
@@ -27,7 +33,8 @@ export class FsMainQuery02Service {
     getColParentID: (collectionName: string) => Observable<string[]>): Observable<DocumentData[]> {
     const test00$: Observable<string[]> = getColParentID(collectionName);
     const test01$: Observable<DocumentData[]> = test00$.pipe(
-      switchMap((data00: any) => this.getMainCollection00(collectionName, data00[0], documentType)));
+      switchMap((data00: any) => this.getMainCollection00(collectionName, data00[0], documentType)),
+      finalize(() => this.loadingService.show()));
     return test01$;
   }
   private getColParentID00(collectionName: string): Observable<string[]> {

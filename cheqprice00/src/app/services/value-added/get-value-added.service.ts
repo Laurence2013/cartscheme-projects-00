@@ -13,9 +13,7 @@ import { ValueAddedService } from '../../services/value-added/value-added.servic
 import { MainValueAddedService } from '../../services/helpers/main-value-added.service';
 import { FsValueAddedService } from './fs-value-added.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class GetValueAddedService {
 
 	private valueAddedService = inject(ValueAddedService);
@@ -27,12 +25,11 @@ export class GetValueAddedService {
 		const getLoyalty$: Observable<DocumentData> = this.valueAddedService.getLoyalty();
 		const getVouchers$: Observable<DocumentData> = this.valueAddedService.getVouchers();
 
-		//const test00$ = this.mainValueAddedService.mainValueAdded02(getCashbacks$, 'Cashbacks');
-		//const test01$ = this.mainValueAddedService.mainValueAdded01(EMPTY, getLoyalty$, EMPTY, 'Loyalty');
-		//const test02$ = this.mainValueAddedService.mainValueAdded01(EMPTY, EMPTY, getVouchers$, 'Vouchers');
-		//const result00$ = merge(test00$).pipe(toArray());	
-		//result00$.subscribe(console.log);
-		return EMPTY;
+		const test00$ = this.mainValueAddedService.mainValueAdded02(getCashbacks$, 'Cashbacks');
+		const test01$ = this.mainValueAddedService.mainValueAdded02(getLoyalty$, 'Loyalty');
+		const test02$ = this.mainValueAddedService.mainValueAdded02(getVouchers$, 'Vouchers');
+		const result00$ = merge(test00$, test01$, test02$).pipe(toArray());	
+		return result00$;
 	}
 	public getValueAdded(): Observable<MainValueAdded00[]> {
 		const getCashbacks$: Observable<Cashbacks> = this.valueAddedService.getCashbacks000();
