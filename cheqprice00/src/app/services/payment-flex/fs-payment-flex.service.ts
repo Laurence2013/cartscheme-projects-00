@@ -22,9 +22,14 @@ export class FsPaymentFlexService {
         if(data02 === 'bnpl_info'){
           console.log(data00);
           const test01$: Observable<DocumentData> = this.fsMainQuery02Service.getColParentID00(collectionName).pipe(
-            map((data03: string[]) => this.fsMainQuery01Service.getDocuments(collectionName, data03[0], documentType)),
-          );
-          test01$.subscribe();
+            mergeMap((data03: string[]) => { 
+              const test02$ = this.fsMainQuery01Service.getDocuments00(collectionName, data03[0], documentType);
+              test02$.pipe(
+                tap(console.log)
+              ).subscribe();
+              return EMPTY;
+            }));
+          test01$.subscribe(console.log);
           return EMPTY;
         }
         return EMPTY;
