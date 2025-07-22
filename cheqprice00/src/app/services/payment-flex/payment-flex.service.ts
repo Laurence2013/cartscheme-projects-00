@@ -23,7 +23,7 @@ export class PaymentFlexService {
 
   public constructor(private fsPaymentFlexService: FsPaymentFlexService){}
   public getBnpl(): Observable<DocumentData> {
-    const test00$ = from(this.fsPaymentFlexService.getFsValueAdded('payment-flex', 'bnpl').pipe(
+    const test00$ = from(this.fsPaymentFlexService.getFsPaymentFlex('payment-flex', 'bnpl').pipe(
       switchMap((data00: ObservableInput<DocumentData>) => from(data00).pipe(take(2)))));
     return EMPTY;
   }

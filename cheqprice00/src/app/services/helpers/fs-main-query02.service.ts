@@ -29,7 +29,7 @@ export class FsMainQuery02Service {
       return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
     return EMPTY;
   }
-  private getValueAdded01(
+  public getValueAdded01(
     collectionName: string, 
     documentType: string,
     getColParentID: (collectionName: string) => Observable<string[]>): Observable<DocumentData[]> {

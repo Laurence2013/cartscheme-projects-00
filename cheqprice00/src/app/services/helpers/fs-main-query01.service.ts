@@ -19,5 +19,8 @@ export class FsMainQuery01Service {
 			)));
 	 return test02$;
 	}
-	public getNestedCollection(collectionName: string){}
+	public getDocuments(collectionName: string, parentId: string, documentType: string): Observable<DocumentData[]> {
+		console.log(collectionName, parentId, documentType);
+		return EMPTY;
+	}
 }
