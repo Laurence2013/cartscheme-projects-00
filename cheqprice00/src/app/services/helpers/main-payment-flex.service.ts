@@ -20,14 +20,10 @@ export class MainPaymentFlexService {
     getGiftcards$: Observable<Giftcards>,
     valueType: string
   ): Observable<PaymentFlex00> {
-    type Test00$ = Observable<Bnpl | Giftcards>;
-
     if(valueType === 'bnpl'){
-      return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.fsMainQuery01Service.get_IIF);
-    };
+      return this.getMainPaymentFlex(getBnpl$, valueType, this.getBnpl, this.fsMainQuery01Service.get_IIF)};
     if(valueType === 'giftcards'){
-      return this.getMainPaymentFlex(getGiftcards$, valueType, this.getGiftcards, this.fsMainQuery01Service.get_IIF);
-    };
+      return this.getMainPaymentFlex(getGiftcards$, valueType, this.getGiftcards, this.fsMainQuery01Service.get_IIF)};
     return EMPTY;
   }
   private getMainPaymentFlex(

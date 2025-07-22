@@ -19,7 +19,7 @@ export class FsMainQuery02Service {
     private loadingService: LoadingService
   ){}
   public getValueAdded00(collectionName: string, documentType: string): Observable<DocumentData[]> {
-    if(documentType === 'cashbacks') {
+    if(documentType === 'cashbacks'){
       return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
     if(documentType === 'loyalty'){
       return this.getValueAdded01(collectionName, documentType, this.getColParentID00.bind(this))}
@@ -39,7 +39,7 @@ export class FsMainQuery02Service {
       finalize(() => this.loadingService.show()));
     return test01$;
   }
-  private getColParentID00(collectionName: string): Observable<string[]> {
+  public getColParentID00(collectionName: string): Observable<string[]> {
       const myCollectObjs00: CollectionReference<DocumentData> = collection(this.firestore, collectionName);
       return from(getDocs(myCollectObjs00)).pipe(
         map((data00: QuerySnapshot<DocumentData>) => data00.docs.map(doc => doc.id)));
