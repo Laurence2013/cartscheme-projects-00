@@ -25,7 +25,7 @@ export class FsPaymentFlexService {
             mergeMap((data03: string[]) => { 
               const test02$ = this.fsMainQuery01Service.getDocuments00(collectionName, data03[0], documentType);
               test02$.pipe(
-                tap(console.log)
+                tap(console.log) //Carry on from here!
               ).subscribe();
               return EMPTY;
             }));
